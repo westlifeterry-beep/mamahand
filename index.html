@@ -56,6 +56,7 @@
                     <span class="font-bold text-xl tracking-wider text-earth-800">Momhandmade.<span class="text-sm font-normal ml-2 text-earth-600">系列編織</span></span>
                 </div>
                 <div>
+                    <!-- 這裡的點擊事件觸發密碼驗證 -->
                     <button id="admin-toggle-btn" onclick="toggleAdmin()" class="text-earth-600 hover:text-earth-900 transition-colors duration-200 text-sm font-medium px-3 py-2 rounded-md hover:bg-earth-200">
                         <i class="fa-solid fa-lock mr-1"></i> 後台管理
                     </button>
@@ -66,14 +67,8 @@
 
     <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
         
-        <!-- Loading Overlay -->
-        <div id="global-loader" class="absolute inset-0 bg-earth-100/90 z-50 flex flex-col items-center justify-center rounded-lg">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-leaf-600 mb-4"></div>
-            <p class="text-earth-700 animate-pulse font-medium">系統初始化中，請稍候...</p>
-        </div>
-
         <!-- Storefront View -->
-        <div id="store-view" class="hidden">
+        <div id="store-view" class="">
             <div class="text-center mb-12">
                 <h1 class="text-3xl md:text-4xl font-bold text-earth-800 mb-4">Momhandmade.系列編織</h1>
                 <p class="text-earth-700 max-w-2xl mx-auto mb-2 text-lg">來自60+媽咪的日常手作編織☘️</p>
@@ -109,6 +104,7 @@
             <div class="bg-white shadow rounded-lg overflow-hidden border border-earth-200 mb-8">
                 <div class="px-6 py-4 border-b border-earth-200 bg-earth-50">
                     <h3 class="text-lg font-bold text-earth-800"><i class="fa-solid fa-box-open mr-2 text-leaf-500"></i>訂單列表</h3>
+                    <p class="text-xs text-earth-500 mt-1">目前訂單資料儲存於您的瀏覽器中（本機儲存）</p>
                 </div>
                 <div class="overflow-x-auto custom-scrollbar">
                     <table class="min-w-full divide-y divide-earth-200">
@@ -117,12 +113,13 @@
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">訂購時間</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">顧客資訊</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">商品與款式</th>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">物流方式</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">領取方式</th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">付款確認</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-earth-500 uppercase tracking-wider">操作</th>
                             </tr>
                         </thead>
                         <tbody id="orders-table-body" class="bg-white divide-y divide-earth-100">
-                            <tr><td colspan="5" class="px-6 py-4 text-center text-earth-500">載入中...</td></tr>
+                            <tr><td colspan="6" class="px-6 py-4 text-center text-earth-500">載入中...</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -131,8 +128,8 @@
             <!-- Manage Products Section -->
             <div class="bg-white shadow rounded-lg overflow-hidden border border-earth-200">
                  <div class="px-6 py-4 border-b border-earth-200 bg-earth-50">
-                    <h3 class="text-lg font-bold text-earth-800"><i class="fa-solid fa-tags mr-2 text-leaf-500"></i>商品管理 (本地預覽用)</h3>
-                    <p class="text-xs text-earth-500 mt-1">此處新增的商品目前僅儲存於本地瀏覽器。</p>
+                    <h3 class="text-lg font-bold text-earth-800"><i class="fa-solid fa-tags mr-2 text-leaf-500"></i>商品管理</h3>
+                    <p class="text-xs text-earth-500 mt-1">您可以在此刪除或新增商品供顧客選購。</p>
                 </div>
                 <div class="p-6">
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="admin-products-container">
@@ -147,6 +144,7 @@
         <p>&copy; 2026 Momhandmade.系列編織 All rights reserved.</p>
     </footer>
 
+    <!-- Order Modal -->
     <div id="order-modal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
             <div class="fixed inset-0 bg-earth-900 bg-opacity-80 transition-opacity cursor-pointer" onclick="closeModal()"></div>
@@ -168,8 +166,8 @@
                             <div class="sticky top-6 w-full flex flex-col items-center">
                                 <img id="modal-product-image" src="" alt="商品預覽" class="w-full max-w-sm rounded-xl shadow-md border border-earth-200 object-cover mb-4">
                                 <div id="modal-colorchart-box" class="w-full text-center hidden">
-                                    <p class="text-xs text-earth-600 mb-2 font-medium">💡 點擊下方色卡可放大檢視對照色號</p>
-                                    <img id="modal-colorchart-thumb" src="" alt="色卡預覽" class="w-full max-w-sm rounded-lg border border-earth-300 shadow-sm cursor-pointer hover:opacity-95 transition" onclick="openLightbox(currentChartSrc)">
+                                    <p class="text-sm font-bold text-earth-800 mb-2 bg-leaf-100 py-1 rounded">👇 點擊下方色卡可放大檢視對照色號</p>
+                                    <img id="modal-colorchart-thumb" src="" alt="色卡預覽" class="w-full max-w-sm rounded-lg border-2 border-earth-300 shadow-sm cursor-pointer hover:opacity-90 transition hover:border-leaf-500" onclick="openLightbox(currentChartSrc)">
                                 </div>
                             </div>
                         </div>
@@ -189,17 +187,17 @@
                                 <div class="pt-2">
                                     <label class="block text-sm font-bold text-earth-800 mb-3">想要怎麼領取呢？ <span class="text-red-500">*</span></label>
                                     <div class="space-y-3 bg-earth-50 p-4 rounded-lg border border-earth-200">
-                                        <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded transition">
+                                        <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded transition border border-transparent hover:border-earth-200">
                                             <input type="radio" name="delivery" value="秀傳自取" class="mr-3 w-4 h-4 text-leaf-600 focus:ring-leaf-500" required> 
-                                            <span class="text-earth-700">秀傳自取+$0</span>
+                                            <span class="text-earth-700 font-medium">秀傳自取+$0</span>
                                         </label>
-                                        <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded transition">
+                                        <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded transition border border-transparent hover:border-earth-200">
                                             <input type="radio" name="delivery" value="超商" class="mr-3 w-4 h-4 text-leaf-600 focus:ring-leaf-500"> 
-                                            <span class="text-earth-700">超商+$60 <span class="text-xs text-earth-500">(下面提供7-11門市)</span></span>
+                                            <span class="text-earth-700 font-medium">超商+$60 <span class="text-xs text-earth-500 font-normal">(下方請提供7-11門市名稱)</span></span>
                                         </label>
-                                        <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded transition">
+                                        <label class="flex items-center cursor-pointer hover:bg-white p-2 rounded transition border border-transparent hover:border-earth-200">
                                             <input type="radio" name="delivery" value="宅配" class="mr-3 w-4 h-4 text-leaf-600 focus:ring-leaf-500"> 
-                                            <span class="text-earth-700">宅配+$100 <span class="text-xs text-earth-500">(下方提供地址)</span></span>
+                                            <span class="text-earth-700 font-medium">宅配+$100 <span class="text-xs text-earth-500 font-normal">(下方請提供完整地址)</span></span>
                                         </label>
                                     </div>
                                 </div>
@@ -218,12 +216,12 @@
                                     </div>
                                     <div>
                                         <label for="customer-email" class="block text-sm font-medium text-earth-700 mb-1">電子信箱 <span class="text-red-500">*</span></label>
-                                        <p class="text-xs text-earth-500 mb-2">*電子信箱將作為後續訂購成功&出貨通知</p>
+                                        <p class="text-xs text-earth-500 mb-2">*電子信箱將作為後續訂購成功與出貨通知</p>
                                         <input type="email" id="customer-email" required class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white">
                                     </div>
                                     <div>
                                         <label for="customer-address" class="block text-sm font-medium text-earth-700 mb-1">超商門市 / 宅配詳細地址</label>
-                                        <p class="text-xs text-earth-500 mb-2">(自取免填)</p>
+                                        <p class="text-xs text-earth-500 mb-2">(若選擇秀傳自取則免填)</p>
                                         <input type="text" id="customer-address" class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white">
                                     </div>
                                 </div>
@@ -231,18 +229,18 @@
                                 <!-- Payment Info -->
                                 <div class="pt-4 border-t border-earth-100">
                                     <div class="bg-leaf-600 text-white p-4 rounded-t-md">
-                                        <p class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-money-bill-transfer"></i> 付款完成</p>
+                                        <p class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-money-bill-transfer"></i> 付款資訊</p>
                                     </div>
                                     <div class="bg-earth-100 p-4 rounded-b-md mb-4 border border-t-0 border-earth-200">
-                                        <p class="text-base text-earth-800 mb-1">中國信託 <strong>882</strong></p>
+                                        <p class="text-base text-earth-800 mb-1">銀行代碼：中國信託 <strong>882</strong></p>
                                         <p class="text-base text-earth-800 mb-1">戶名：黃蓉姿</p>
-                                        <p class="text-base text-earth-800 font-mono text-lg mt-2 bg-white px-3 py-1 rounded inline-block shadow-sm">0000440540564802</p>
+                                        <p class="text-base text-earth-800 mt-2">帳號：<span class="font-mono text-lg bg-white px-3 py-1 rounded inline-block shadow-sm">0000440540564802</span></p>
                                     </div>
                                     
                                     <div>
-                                        <label for="payment-proof" class="block text-sm font-bold text-earth-800 mb-1">匯款完成提供匯款後五碼 <span class="text-red-500">*</span></label>
+                                        <label for="payment-proof" class="block text-sm font-bold text-earth-800 mb-1">匯款後請提供帳號末五碼 <span class="text-red-500">*</span></label>
                                         <p class="text-xs text-earth-600 mb-2">(可接受未出貨前同寄件方式併單出貨)</p>
-                                        <input type="text" id="payment-proof" required class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white" placeholder="例如: 12345">
+                                        <input type="text" id="payment-proof" required class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white" placeholder="例如: 56482">
                                     </div>
                                 </div>
                                 
@@ -251,7 +249,7 @@
                                     <button type="button" onclick="closeModal('order-modal')" class="bg-white border border-earth-300 rounded-md shadow-sm px-4 py-2 text-base font-medium text-earth-700 hover:bg-earth-50 sm:text-sm transition">
                                         取消
                                     </button>
-                                    <button type="submit" id="submit-btn" class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-2 bg-leaf-600 text-base font-medium text-white hover:bg-leaf-700 sm:text-sm transition items-center">
+                                    <button type="submit" id="submit-btn" class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-2 bg-leaf-600 text-base font-bold text-white hover:bg-leaf-700 sm:text-sm transition items-center">
                                         確認送出訂單
                                     </button>
                                 </div>
@@ -263,6 +261,7 @@
         </div>
     </div>
 
+    <!-- Add Product Modal -->
     <div id="add-product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
             <div class="fixed inset-0 bg-earth-900 bg-opacity-80 transition-opacity cursor-pointer" onclick="closeModal('add-product-modal')"></div>
@@ -281,7 +280,7 @@
                     <form id="add-product-form" onsubmit="submitNewProduct(event)" class="space-y-4">
                         <div>
                             <label for="new-product-name" class="block text-sm font-medium text-earth-700 mb-1">商品名稱 <span class="text-red-500">*</span></label>
-                            <input type="text" id="new-product-name" required class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white" placeholder="例如: 手工編織包">
+                            <input type="text" id="new-product-name" required class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white" placeholder="例如: 拼色手工包">
                         </div>
                         
                         <div>
@@ -291,7 +290,7 @@
 
                         <div>
                             <label for="new-product-desc" class="block text-sm font-medium text-earth-700 mb-1">商品描述</label>
-                            <textarea id="new-product-desc" rows="2" class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white" placeholder="商品介紹..."></textarea>
+                            <textarea id="new-product-desc" rows="2" class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white" placeholder="寫些介紹...例如使用的線材或特色"></textarea>
                         </div>
 
                         <div>
@@ -301,23 +300,21 @@
                                     <i class="fa-solid fa-cloud-arrow-up text-3xl text-earth-400 mb-2"></i>
                                     <div class="flex text-sm text-earth-600 justify-center">
                                         <label for="new-product-image" class="relative cursor-pointer bg-white rounded-md font-medium text-leaf-600 hover:text-leaf-500">
-                                            <span>選擇檔案</span>
-                                            <input id="new-product-image" name="file-upload" type="file" accept="image/*" class="sr-only" onchange="previewImageUpload(event, 'preview-new-image')" required>
+                                            <span>選擇照片</span>
+                                            <input id="new-product-image" type="file" accept="image/*" class="sr-only" onchange="previewImageUpload(event, 'preview-new-image')" required>
                                         </label>
-                                        <p class="pl-1">或拖曳至此</p>
                                     </div>
-                                    <p class="text-xs text-earth-500">PNG, JPG, GIF</p>
                                 </div>
-                                <img id="preview-new-image" src="" class="absolute inset-0 w-full h-full object-cover rounded-md hidden opacity-90">
+                                <img id="preview-new-image" src="" class="absolute inset-0 w-full h-full object-cover rounded-md hidden">
                             </div>
                         </div>
 
                         <div>
                             <label class="block text-sm font-medium text-earth-700 mb-1">色卡類型選擇 <span class="text-red-500">*</span></label>
                             <select id="new-product-colorchart" required class="block w-full border border-earth-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-leaf-500 focus:border-leaf-500 sm:text-sm bg-white">
-                                <option value="https://placehold.co/600x400/f4f1ea/5e3a1f?text=Cotton+Color+Chart">純棉彩線色卡</option>
-                                <option value="https://placehold.co/600x400/f4f1ea/5e3a1f?text=Korean+Cotton+Chart">韓國純棉線色卡</option>
-                                <option value="none">無色卡 (固定款式)</option>
+                                <option value="cotton">使用「純棉彩線」色卡</option>
+                                <option value="korean">使用「韓國純棉線」色卡</option>
+                                <option value="none">無色卡 (固定款式/不需選色)</option>
                             </select>
                         </div>
 
@@ -326,7 +323,7 @@
                                 取消
                             </button>
                             <button type="submit" id="submit-new-product-btn" class="inline-flex justify-center rounded-md border border-transparent shadow-sm px-6 py-2 bg-leaf-600 text-base font-medium text-white hover:bg-leaf-700 sm:text-sm transition items-center">
-                                新增商品
+                                上架商品
                             </button>
                         </div>
                     </form>
@@ -335,13 +332,15 @@
         </div>
     </div>
 
-    <div id="lightbox" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black/80" onclick="closeLightbox()">
-        <button class="absolute top-4 right-4 text-white hover:text-earth-200 text-3xl z-50">
+    <!-- Lightbox for Image Zoom -->
+    <div id="lightbox" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-black/85" onclick="closeLightbox()">
+        <button class="absolute top-4 right-4 text-white hover:text-earth-200 text-4xl z-50 p-2">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <img id="lightbox-img" src="" alt="放大預覽" class="rounded-lg shadow-2xl transition-transform duration-300 scale-95">
+        <img id="lightbox-img" src="" alt="放大預覽" class="rounded-lg shadow-2xl transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
     </div>
 
+    <!-- Toast Notification -->
     <div id="toast" class="fixed bottom-5 right-5 transform translate-y-20 opacity-0 transition-all duration-300 z-50 pointer-events-none">
         <div class="bg-earth-800 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-3">
             <i class="fa-solid fa-circle-check text-leaf-500"></i>
@@ -349,46 +348,24 @@
         </div>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-handmade-app';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-            apiKey: "AIzaSyDummyKeyForGitHubPagesHostingCompatibility",
-            authDomain: "dummy-app.firebaseapp.com",
-            projectId: "dummy-app",
-            storageBucket: "dummy-app.appspot.com",
-            messagingSenderId: "123456789",
-            appId: "1:123456789:web:abcdef"
-        };
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        let app, db, auth;
-        try {
-            app = initializeApp(firebaseConfig);
-            db = getFirestore(app);
-            auth = getAuth(app);
-        } catch(e) {
-            console.warn("Firebase init fallback mode active:", e);
-        }
-        
-        let currentUserId = 'github-user-' + Math.random().toString(36).substring(2, 9);
-        let unsubscribeOrders = null;
-        let currentChartSrc = '';
-        
+    <script>
+        // 色號資料 (對應您圖片上的文字)
         const cottonColors = ['#40米白', '#08米色', '#02奶油', '#23杏桃', '#17灰棕', '#19咖啡', '#03薄荷', '#06豆綠', '#32松綠', '#33墨綠', '#35石墨', '#21深棕', '#09裸粉', '#10粉紅', '#12藕荷', '#13薰衣草', '#36鮭魚', '#38紅色', '#04天藍', '#26淺灰藍', '#30孔雀藍', '#34鋼青', '#28寶藍', '#39黑色'];
         const koreanColors = ['#302淡米色', '#321淡黃色', '#303灰米色', '#311芥末黃', '#337鵝黃', '#307薄荷綠', '#317檸檬綠', '#325青色', '#328亮綠', '#338墨綠', '#326軍綠', '#341嬰兒藍', '#340藍寶石', '#319墨藍', '#346櫻花橘', '#322桃紅', '#343薰衣草', '#330亮橘', '#313黑色', '#320白色'];
 
-        let products = [
+        // 將圖片轉為 Base64 (避免外部載入失敗)，這裡以高畫質預設圖網址代替，確保 GitHub 上一定能顯示
+        const defaultCottonChart = 'https://images.unsplash.com/photo-1620325867502-221ddb5b4e24?auto=format&fit=crop&w=800&q=80'; // 示意棉線色卡
+        const defaultKoreanChart = 'https://images.unsplash.com/photo-1584916201218-f4242ceb4809?auto=format&fit=crop&w=800&q=80'; // 示意韓國棉色卡
+
+        // 本地商品資料庫
+        let products = JSON.parse(localStorage.getItem('mom_products')) || [
             {
                 id: 'p1',
                 name: '小雛菊飲料提袋 🌼',
                 price: 280,
-                desc: '100%純棉彩線<br><span class="text-sm text-earth-500 mt-2 block">(實拍圖使用網袋#06豆綠 / 花瓣#40米白 / 花蕊-02奶油)</span><br><a href="javascript:void(0)" onclick="openLightbox(\'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80\')" class="text-leaf-600 text-xs hover:underline mt-1 inline-block"><i class="fa-solid fa-circle-info"></i> 點我看部位說明</a>',
+                desc: '100%純棉彩線<br><span class="text-sm text-earth-500 mt-2 block">(實拍圖使用網袋#06豆綠 / 花瓣#40米白 / 花蕊-02奶油)</span><br><a href="javascript:void(0)" onclick="openLightbox(\'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80\')" class="text-leaf-600 font-bold hover:underline mt-1 inline-block"><i class="fa-solid fa-hand-point-right"></i> 點我查看部位圖解說明</a>',
                 image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80',
-                colorChart: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+                colorChart: defaultCottonChart,
                 options: [
                     { id: 'net', label: '網袋顏色', choices: cottonColors },
                     { id: 'petal', label: '花瓣顏色', choices: cottonColors },
@@ -401,7 +378,7 @@
                 price: 1300,
                 desc: '使用100%韓國純棉線<br><span class="text-sm text-earth-500 mt-2 block">(實拍圖使用#302淡米色)</span>',
                 image: 'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=800&q=80',
-                colorChart: 'https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?auto=format&fit=crop&w=800&q=80',
+                colorChart: defaultKoreanChart,
                 options: [
                     { id: 'bag', label: '顏色選擇', choices: koreanColors }
                 ]
@@ -410,100 +387,66 @@
                 id: 'p3',
                 name: '紅番茄大提袋 🍅',
                 price: 1100,
-                desc: '手工編織大容量提袋，點綴可愛小番茄<br><span class="text-sm text-earth-500 mt-2 block">(經典紅綠配色，恕不提供自訂色卡)</span>',
+                desc: '手工編織大容量提袋，點綴可愛小番茄<br><span class="text-sm text-earth-500 mt-2 block">經典紅綠配色，不提供自訂色卡</span>',
                 image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80',
                 colorChart: 'none',
                 options: []
             }
         ];
 
+        // 本地訂單資料庫
         let localOrders = JSON.parse(localStorage.getItem('mom_orders') || '[]');
+        let currentChartSrc = '';
 
-        async function initApp() {
-            try {
-                if (auth) {
-                    if (initialAuthToken) {
-                        await signInWithCustomToken(auth, initialAuthToken);
-                    } else {
-                        await signInAnonymously(auth);
-                    }
-                    if (auth.currentUser) currentUserId = auth.currentUser.uid;
-                }
-            } catch (error) {
-                console.warn("Auth fallback mode active:", error);
-            } finally {
-                const loader = document.getElementById('global-loader');
-                if (loader) loader.style.display = 'none';
-                renderProducts();
-                window.navigate('store');
-            }
-        }
+        // 畫面載入初始化
+        window.onload = function() {
+            renderProducts();
+        };
 
         function renderProducts() {
             const container = document.getElementById('products-container');
             if(!container) return;
             container.innerHTML = products.map(product => `
-                <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-earth-100 overflow-hidden flex flex-col group relative">
-                    <div class="h-64 w-full bg-earth-200 flex items-center justify-center relative overflow-hidden cursor-pointer" onclick="openLightbox('${product.image}')">
-                        <img src="${product.image}" alt="${product.name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/600x400/e5ded1/2c241b?text=Momhandmade'">
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-earth-200 overflow-hidden flex flex-col group relative">
+                    <div class="h-72 w-full bg-earth-100 flex items-center justify-center relative overflow-hidden cursor-pointer" onclick="openLightbox('${product.image}')">
+                        <img src="${product.image}" alt="${product.name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                            <i class="fa-solid fa-magnifying-glass-plus text-white text-3xl drop-shadow-md"></i>
+                            <i class="fa-solid fa-magnifying-glass-plus text-white text-4xl drop-shadow-lg"></i>
                         </div>
-                        <div class="absolute bottom-3 right-3 bg-white/95 px-4 py-1.5 rounded-full text-sm font-bold text-earth-800 shadow-md z-10 backdrop-blur-sm">
+                        <div class="absolute top-3 right-3 bg-white/95 px-4 py-1.5 rounded-full text-base font-bold text-leaf-700 shadow-md z-10 border border-leaf-100">
                             NT$ ${product.price}
                         </div>
                     </div>
                     
                     <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-earth-800 mb-2">${product.name}</h3>
+                        <h3 class="text-xl font-bold text-earth-900 mb-2">${product.name}</h3>
                         <p class="text-earth-600 text-sm mb-6 flex-grow leading-relaxed">${product.desc}</p>
                         
-                        <button onclick="openOrderModal('${product.id}')" class="w-full bg-leaf-600 hover:bg-leaf-700 text-white font-medium py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm">
-                            <i class="fa-solid fa-cart-shopping"></i> 立即填單訂購
+                        <button onclick="openOrderModal('${product.id}')" class="w-full bg-leaf-600 hover:bg-leaf-700 text-white font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm text-lg">
+                            <i class="fa-solid fa-cart-arrow-down"></i> 立即填單訂購
                         </button>
                     </div>
                 </div>
             `).join('');
             renderAdminProducts();
         }
-        
-        function renderAdminProducts() {
-            const container = document.getElementById('admin-products-container');
-            if(!container) return;
-            
-            container.innerHTML = products.map(product => `
-                <div class="flex items-center gap-3 bg-white p-3 border border-earth-200 rounded-lg shadow-sm">
-                    <img src="${product.image}" class="w-16 h-16 object-cover rounded bg-earth-100" onerror="this.src='https://placehold.co/100x100/e5ded1/2c241b?text=Img'">
-                    <div class="flex-grow min-w-0">
-                        <h4 class="text-sm font-bold text-earth-800 truncate">${product.name}</h4>
-                        <p class="text-xs text-earth-500">NT$ ${product.price}</p>
-                    </div>
-                    <button onclick="removeProduct('${product.id}')" class="text-red-400 hover:text-red-600 p-2 transition-colors" title="刪除商品">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </div>
-            `).join('');
-        }
-        
-        window.removeProduct = function(id) {
-            products = products.filter(p => p.id !== id);
-            renderProducts();
-            showToast('商品已移除');
-        };
 
-        window.openLightbox = function(imageSrc) {
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.src = imageSrc;
-            lightbox.classList.remove('hidden');
-            setTimeout(() => img.classList.replace('scale-95', 'scale-100'), 10);
-        };
-
-        window.closeLightbox = function() {
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.classList.replace('scale-100', 'scale-95');
-            setTimeout(() => lightbox.classList.add('hidden'), 300);
+        // --- 管理員權限與密碼邏輯 ---
+        window.toggleAdmin = function() {
+            const adminView = document.getElementById('admin-view');
+            if (adminView.classList.contains('hidden')) {
+                // 要求輸入密碼
+                const pwd = prompt('🔒 請輸入後台管理員密碼：\n(預設密碼為mama5473)');
+                
+                // 檢查密碼是否正確
+                if (pwd === 'mama5473') { 
+                    window.navigate('admin');
+                } else if (pwd !== null) {
+                    alert('❌ 密碼錯誤！您無法進入後台。');
+                }
+            } else {
+                window.navigate('store');
+            }
         };
 
         window.navigate = function(view) {
@@ -513,33 +456,23 @@
             if (view === 'store') {
                 document.getElementById('store-view').classList.remove('hidden');
                 document.getElementById('admin-toggle-btn').innerHTML = '<i class="fa-solid fa-lock mr-1"></i> 後台管理';
-                if(unsubscribeOrders) {
-                    unsubscribeOrders(); 
-                    unsubscribeOrders = null;
-                }
+                document.getElementById('admin-toggle-btn').classList.replace('text-leaf-600', 'text-earth-600');
             } else if (view === 'admin') {
                 document.getElementById('admin-view').classList.remove('hidden');
-                document.getElementById('admin-toggle-btn').innerHTML = '<i class="fa-solid fa-store mr-1"></i> 商店前台';
+                document.getElementById('admin-toggle-btn').innerHTML = '<i class="fa-solid fa-store mr-1"></i> 返回前台';
+                document.getElementById('admin-toggle-btn').classList.replace('text-earth-600', 'text-leaf-600');
                 loadAdminOrders();
             }
         };
 
-        window.toggleAdmin = function() {
-            const adminView = document.getElementById('admin-view');
-            if (adminView.classList.contains('hidden')) {
-                window.navigate('admin');
-            } else {
-                window.navigate('store');
-            }
-        };
-
+        // --- 訂單表單邏輯 ---
         window.openOrderModal = function(productId) {
             const product = products.find(p => p.id === productId);
             if (!product) return;
 
             document.getElementById('form-product-id').value = product.id;
             document.getElementById('form-product-title').value = product.name;
-            document.getElementById('modal-product-name').innerHTML = `<i class="fa-solid fa-palette text-leaf-600"></i> 訂購：${product.name} <span class="text-sm font-normal text-earth-500 ml-2">(NT$${product.price})</span>`;
+            document.getElementById('modal-product-name').innerHTML = `<i class="fa-solid fa-bag-shopping text-leaf-600"></i> 訂購：${product.name}`;
             
             document.getElementById('modal-product-image').src = product.image;
 
@@ -556,93 +489,29 @@
             const optionsContainer = document.getElementById('dynamic-options-container');
             if (product.options && product.options.length > 0) {
                 optionsContainer.innerHTML = product.options.map(opt => `
-                    <div class="mb-2">
-                        <label class="block text-sm font-bold text-earth-700 mb-1.5">${opt.label} <span class="text-red-500">*</span></label>
-                        <select name="custom-opt-${opt.id}" data-label="${opt.label}" required class="block w-full px-3 py-2.5 text-base border-earth-300 focus:outline-none focus:ring-2 focus:ring-leaf-500 rounded-md bg-white border shadow-sm cursor-pointer">
-                            <option value="" disabled selected>請選擇顏色...</option>
+                    <div class="mb-3">
+                        <label class="block text-sm font-bold text-earth-800 mb-1.5">${opt.label} <span class="text-red-500">*</span></label>
+                        <select name="custom-opt-${opt.id}" data-label="${opt.label}" required class="block w-full px-3 py-3 text-base border-earth-300 focus:outline-none focus:ring-2 focus:ring-leaf-500 rounded-md bg-white border-2 shadow-sm cursor-pointer">
+                            <option value="" disabled selected>請對照色卡，選擇您的顏色...</option>
                             ${opt.choices.map(c => `<option value="${c}">${c}</option>`).join('')}
                         </select>
                     </div>
                 `).join('');
             } else {
-                optionsContainer.innerHTML = `<p class="text-sm text-earth-600 text-center py-2"><i class="fa-solid fa-circle-check text-leaf-600 mr-1"></i> 此商品採經典配色製作，無需選擇色卡。</p>`;
+                optionsContainer.innerHTML = `<p class="text-sm font-medium text-leaf-700 text-center py-2 bg-white rounded border border-leaf-200"><i class="fa-solid fa-circle-check mr-1"></i> 此為經典固定配色，無需挑選顏色即可直接下單。</p>`;
             }
 
             document.getElementById('order-form').reset();
             document.getElementById('order-modal').classList.remove('hidden');
         };
 
-        window.closeModal = function(modalId = 'order-modal') {
-            document.getElementById(modalId).classList.add('hidden');
-        };
-        
-        window.openAddProductModal = function() {
-            document.getElementById('add-product-form').reset();
-            const preview = document.getElementById('preview-new-image');
-            preview.src = "";
-            preview.classList.add('hidden');
-            document.getElementById('add-product-modal').classList.remove('hidden');
-        };
-        
-        window.previewImageUpload = function(event, previewElementId) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const preview = document.getElementById(previewElementId);
-                    preview.src = e.target.result;
-                    preview.classList.remove('hidden');
-                }
-                reader.readAsDataURL(file);
-            }
-        };
-        
-        window.submitNewProduct = function(event) {
+        window.submitOrder = function(event) {
             event.preventDefault();
-            
-            const name = document.getElementById('new-product-name').value;
-            const price = parseInt(document.getElementById('new-product-price').value);
-            const desc = document.getElementById('new-product-desc').value;
-            const colorChart = document.getElementById('new-product-colorchart').value;
-            const imagePreviewSrc = document.getElementById('preview-new-image').src;
-            
-            if (!imagePreviewSrc) {
-                showToast("請上傳商品圖片");
-                return;
-            }
-            
-            let options = [];
-            if (colorChart.includes('Cotton')) {
-                options = [{ id: 'color', label: '顏色選擇', choices: cottonColors }];
-            } else if (colorChart.includes('Korean')) {
-                options = [{ id: 'color', label: '顏色選擇', choices: koreanColors }];
-            }
-            
-            const newProduct = {
-                id: 'p' + Date.now(),
-                name: name,
-                price: price,
-                desc: desc || '手工製作商品',
-                image: imagePreviewSrc,
-                colorChart: colorChart === 'none' ? 'none' : colorChart,
-                options: options
-            };
-            
-            products.push(newProduct);
-            renderProducts();
-            closeModal('add-product-modal');
-            showToast('新商品已成功新增！');
-        };
-
-        window.submitOrder = async function(event) {
-            event.preventDefault();
-
             const btn = document.getElementById('submit-btn');
-            const originalBtnText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> 處理中...';
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> 訂單送出中...';
 
-            try {
+            setTimeout(() => {
                 const productName = document.getElementById('form-product-title').value;
                 const name = document.getElementById('customer-name').value;
                 const phone = document.getElementById('customer-phone').value;
@@ -658,6 +527,7 @@
                 });
 
                 const orderData = {
+                    id: 'ORD' + Date.now().toString().slice(-6),
                     productName: productName,
                     customDetails: customDetails,
                     customerName: name,
@@ -666,35 +536,187 @@
                     delivery: delivery,
                     address: address,
                     paymentProof: paymentProof,
-                    userId: currentUserId,
                     timeMs: Date.now()
                 };
 
-                // Try Firebase if active, otherwise fallback to LocalStorage
-                if (db && auth) {
-                    try {
-                        const ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
-                        await addDoc(ordersRef, { ...orderData, timestamp: serverTimestamp() });
-                    } catch(fbErr) {
-                        console.warn("Firestore sync fallback to localStorage:", fbErr);
-                        localOrders.unshift(orderData);
-                        localStorage.setItem('mom_orders', JSON.stringify(localOrders));
-                    }
-                } else {
-                    localOrders.unshift(orderData);
-                    localStorage.setItem('mom_orders', JSON.stringify(localOrders));
-                }
+                // 儲存到瀏覽器本地端 (LocalStorage)
+                localOrders.unshift(orderData);
+                localStorage.setItem('mom_orders', JSON.stringify(localOrders));
 
-                showToast('訂單已成功送出！請留意電子信箱通知。');
-                closeModal();
-
-            } catch (error) {
-                console.error("Order submission failed:", error);
-                showToast('送出失敗，請稍後再試。');
-            } finally {
+                showToast('🎉 訂單已成功送出！我們會盡快為您製作。');
+                closeModal('order-modal');
+                
                 btn.disabled = false;
-                btn.innerHTML = originalBtnText;
+                btn.innerHTML = '確認送出訂單';
+            }, 800);
+        };
+
+        // --- 後台管理邏輯 ---
+        function loadAdminOrders() {
+            renderAdminTable(localOrders);
+        }
+
+        function renderAdminTable(orders) {
+            const tbody = document.getElementById('orders-table-body');
+            
+            if (!orders || orders.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="px-6 py-8 text-center text-earth-500 bg-white">目前尚無顧客下單。</td></tr>';
+                return;
             }
+
+            tbody.innerHTML = orders.map(order => {
+                const dateObj = new Date(order.timeMs);
+                const timeString = dateObj.toLocaleString('zh-TW', {
+                    month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
+                });
+
+                const detailsHtml = order.customDetails && Object.keys(order.customDetails).length > 0 ? 
+                    Object.entries(order.customDetails).map(([k,v]) => `<div class="text-xs text-earth-600 mt-1">${escapeHtml(k)}: <span class="font-bold text-leaf-700 bg-white px-1.5 py-0.5 rounded border border-leaf-100">${escapeHtml(v)}</span></div>`).join('') 
+                    : '<div class="text-xs text-earth-500 mt-1">無特殊選色</div>';
+
+                return `
+                    <tr class="hover:bg-earth-50 transition-colors">
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-earth-500 font-mono">${timeString}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-bold text-earth-900 mb-1">${escapeHtml(order.customerName)}</div>
+                            <div class="text-xs text-earth-600 mb-1"><i class="fa-solid fa-phone w-4"></i> ${escapeHtml(order.phone)}</div>
+                            <div class="text-xs text-earth-600"><i class="fa-solid fa-envelope w-4"></i> ${escapeHtml(order.email)}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-normal min-w-[200px]">
+                            <div class="text-sm font-bold text-earth-800 mb-2">${escapeHtml(order.productName)}</div>
+                            <div class="bg-leaf-50/50 p-2 rounded">${detailsHtml}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-normal">
+                            <span class="px-2.5 py-1 inline-flex text-xs leading-5 font-bold rounded bg-earth-200 text-earth-800 mb-2 shadow-sm">${escapeHtml(order.delivery)}</span>
+                            <div class="text-xs text-earth-600 line-clamp-2">${escapeHtml(order.address || '-')}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm text-earth-900"><span class="font-mono bg-green-50 text-green-700 px-2 py-1 rounded border border-green-200 font-bold tracking-wider">${escapeHtml(order.paymentProof)}</span></div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <button onclick="deleteOrder('${order.id}')" class="text-red-500 hover:text-red-700 bg-red-50 px-3 py-1 rounded border border-red-100 text-xs transition">刪除</button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        window.deleteOrder = function(orderId) {
+            if(confirm('確定要刪除這筆訂單嗎？刪除後無法復原。')) {
+                localOrders = localOrders.filter(o => o.id !== orderId);
+                localStorage.setItem('mom_orders', JSON.stringify(localOrders));
+                loadAdminOrders();
+                showToast('已刪除該筆訂單');
+            }
+        };
+
+        function renderAdminProducts() {
+            const container = document.getElementById('admin-products-container');
+            if(!container) return;
+            container.innerHTML = products.map(product => `
+                <div class="flex items-center gap-3 bg-white p-3 border border-earth-200 rounded-lg shadow-sm">
+                    <img src="${product.image}" class="w-16 h-16 object-cover rounded bg-earth-100">
+                    <div class="flex-grow min-w-0">
+                        <h4 class="text-sm font-bold text-earth-800 truncate">${product.name}</h4>
+                        <p class="text-xs text-earth-500 font-mono">NT$ ${product.price}</p>
+                    </div>
+                    <button onclick="removeProduct('${product.id}')" class="text-red-400 hover:text-white hover:bg-red-500 h-8 w-8 rounded transition-colors flex items-center justify-center">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        window.removeProduct = function(id) {
+            if(confirm('確定要下架這個商品嗎？')) {
+                products = products.filter(p => p.id !== id);
+                localStorage.setItem('mom_products', JSON.stringify(products));
+                renderProducts();
+                showToast('商品已下架');
+            }
+        };
+
+        window.openAddProductModal = function() {
+            document.getElementById('add-product-form').reset();
+            const preview = document.getElementById('preview-new-image');
+            preview.src = "";
+            preview.classList.add('hidden');
+            document.getElementById('add-product-modal').classList.remove('hidden');
+        };
+
+        window.previewImageUpload = function(event, previewElementId) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById(previewElementId);
+                    preview.src = e.target.result;
+                    preview.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        };
+
+        window.submitNewProduct = function(event) {
+            event.preventDefault();
+            const name = document.getElementById('new-product-name').value;
+            const price = parseInt(document.getElementById('new-product-price').value);
+            const desc = document.getElementById('new-product-desc').value;
+            const chartType = document.getElementById('new-product-colorchart').value;
+            const imagePreviewSrc = document.getElementById('preview-new-image').src;
+            
+            if (!imagePreviewSrc) {
+                alert("請上傳商品照片！");
+                return;
+            }
+            
+            let options = [];
+            let chartSrc = 'none';
+            if (chartType === 'cotton') {
+                options = [{ id: 'color', label: '顏色選擇', choices: cottonColors }];
+                chartSrc = defaultCottonChart;
+            } else if (chartType === 'korean') {
+                options = [{ id: 'color', label: '顏色選擇', choices: koreanColors }];
+                chartSrc = defaultKoreanChart;
+            }
+            
+            const newProduct = {
+                id: 'p' + Date.now(),
+                name: name,
+                price: price,
+                desc: desc || '手作編織商品',
+                image: imagePreviewSrc,
+                colorChart: chartSrc,
+                options: options
+            };
+            
+            products.push(newProduct);
+            localStorage.setItem('mom_products', JSON.stringify(products));
+            
+            renderProducts();
+            closeModal('add-product-modal');
+            showToast('✅ 新商品已成功上架！');
+        };
+
+        // --- UI 共用小工具 ---
+        window.openLightbox = function(imageSrc) {
+            if(!imageSrc || imageSrc === 'none') return;
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = imageSrc;
+            lightbox.classList.remove('hidden');
+            setTimeout(() => img.classList.replace('scale-95', 'scale-100'), 10);
+        };
+
+        window.closeLightbox = function() {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.classList.replace('scale-100', 'scale-95');
+            setTimeout(() => lightbox.classList.add('hidden'), 300);
+        };
+
+        window.closeModal = function(modalId = 'order-modal') {
+            document.getElementById(modalId).classList.add('hidden');
         };
 
         function showToast(message) {
@@ -708,91 +730,15 @@
             }, 3000);
         }
 
-        function loadAdminOrders() {
-            const tbody = document.getElementById('orders-table-body');
-            tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-4 text-center text-earth-500"><i class="fa-solid fa-spinner fa-spin mr-2"></i>載入資料中...</td></tr>';
-
-            if (db && auth) {
-                try {
-                    const ordersRef = collection(db, 'artifacts', appId, 'public', 'data', 'orders');
-                    unsubscribeOrders = onSnapshot(ordersRef, (snapshot) => {
-                        let orders = [];
-                        snapshot.forEach((doc) => {
-                            const data = doc.data();
-                            orders.push({
-                                id: doc.id,
-                                ...data,
-                                timeMs: data.timestamp ? data.timestamp.toMillis() : (data.timeMs || Date.now())
-                            });
-                        });
-                        orders.sort((a, b) => b.timeMs - a.timeMs);
-                        renderAdminTable(orders);
-                    }, (error) => {
-                        console.warn("Firestore snapshot error, using localStorage:", error);
-                        renderAdminTable(localOrders);
-                    });
-                    return;
-                } catch(e) {
-                    console.warn("Firestore binding error:", e);
-                }
-            }
-            renderAdminTable(localOrders);
-        }
-
-        function renderAdminTable(orders) {
-            const tbody = document.getElementById('orders-table-body');
-            
-            if (!orders || orders.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-earth-500">目前尚無訂單。</td></tr>';
-                return;
-            }
-
-            tbody.innerHTML = orders.map(order => {
-                const dateObj = new Date(order.timeMs || Date.now());
-                const timeString = dateObj.toLocaleString('zh-TW', {
-                    year: 'numeric', month: '2-digit', day: '2-digit',
-                    hour: '2-digit', minute: '2-digit'
-                });
-
-                const detailsHtml = order.customDetails && Object.keys(order.customDetails).length > 0 ? 
-                    Object.entries(order.customDetails).map(([k,v]) => `<div class="text-xs text-earth-600 mt-1">${escapeHtml(k)}: <span class="font-bold text-leaf-700 bg-white px-1 rounded">${escapeHtml(v)}</span></div>`).join('') 
-                    : '<div class="text-xs text-earth-500">無特殊客製</div>';
-
-                return `
-                    <tr class="hover:bg-earth-50 transition-colors">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-earth-500">${timeString}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm font-medium text-earth-900 mb-1">${escapeHtml(order.customerName)}</div>
-                            <div class="text-xs text-earth-500 mb-1"><i class="fa-solid fa-phone text-earth-400 mr-1 w-3"></i> ${escapeHtml(order.phone)}</div>
-                            <div class="text-xs text-earth-500 truncate max-w-[150px]"><i class="fa-solid fa-envelope text-earth-400 mr-1 w-3"></i> ${escapeHtml(order.email)}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-normal min-w-[200px]">
-                            <div class="text-sm font-bold text-earth-800 mb-2">${escapeHtml(order.productName)}</div>
-                            <div class="bg-leaf-50/50 p-2 rounded border border-leaf-100">${detailsHtml}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-normal">
-                            <span class="px-2.5 py-0.5 inline-flex text-xs leading-5 font-bold rounded-full bg-earth-200 text-earth-800 mb-2 whitespace-nowrap shadow-sm">${escapeHtml(order.delivery)}</span>
-                            <div class="text-xs text-earth-600 line-clamp-2 max-w-[200px]">${escapeHtml(order.address || '無詳細地址')}</div>
-                        </td>
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <div class="text-sm text-earth-900">末五碼: <span class="font-mono bg-green-50 text-green-700 px-1.5 py-0.5 rounded border border-green-200 font-bold">${escapeHtml(order.paymentProof)}</span></div>
-                        </td>
-                    </tr>
-                `;
-            }).join('');
-        }
-
-        function escapeHtml(unsafe) {
-            if (!unsafe) return '';
-            return unsafe.toString()
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.toString()
                  .replace(/&/g, "&amp;")
                  .replace(/</g, "&lt;")
                  .replace(/>/g, "&gt;")
                  .replace(/"/g, "&quot;")
                  .replace(/'/g, "&#039;");
         }
-
-        window.onload = initApp;
     </script>
 </body>
 </html>
