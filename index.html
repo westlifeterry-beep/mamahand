@@ -2551,7 +2551,7 @@ async function syncFromGoogleSheet(showNotification = false) {
   if (!gasUrl || !gasUrl.startsWith('https://script.google.com/')) return;
   try {
     const sep = gasUrl.includes('?') ? '&' : '?';
-    const res = await fetch(`${gasUrl}${sep}action=getData&t=${Date.now()}`, {
+    const response = await fetch(`${yourApiUrl}?action=getData&t=${new Date().getTime()}`);
       method: 'GET',
       redirect: 'follow'
     });
