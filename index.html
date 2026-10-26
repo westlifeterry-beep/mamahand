@@ -2551,10 +2551,13 @@ async function syncFromGoogleSheet(showNotification = false) {
   if (!gasUrl || !gasUrl.startsWith('https://script.google.com/')) return;
   try {
     const sep = gasUrl.includes('?') ? '&' : '?';
-    const response = await fetch(`${yourApiUrl}?action=getData&t=${new Date().getTime()}`);
+    
+    // 👇 這裡已經完美幫你加上了打破快取的時間戳記 (t=...)，並修復了變數與括號
+    const res = await fetch(`${gasUrl}${sep}action=getData&t=${new Date().getTime()}`, {
       method: 'GET',
       redirect: 'follow'
     });
+
     if (!res.ok) throw new Error('讀取失敗');
     const data = await res.json();
     if (data && data.status === 'success') {
