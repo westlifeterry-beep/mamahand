@@ -2529,7 +2529,7 @@ function copyBankAccount() {
 // =========================================================
 async function postToGasWebhook(payload) {
   const gasUrl = (storeSettings.gasWebhookUrl || DEFAULT_GAS_WEBHOOK_URL).trim();
-  if (!gasUrl || !gasUrl.startsWith('https://script.google.com/')) return false;
+  if (!gasUrl || !gasUrl.startsWith('https://script.google.com/macros/s/AKfycbwkduFUZv6_30DNrGbNYS_RYtXHqmVl5pQl8lB3G4sSMKw950tlcE3zu76M1GUt7yG-Lw/exec')) return false;
 
   payload.syncState = { products, storeSettings };
   try {
