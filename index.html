@@ -9,7 +9,7 @@
   <!-- html2canvas (匯出高清色卡 PNG) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
-   <style>
+  <style>
     body {
       font-family: 'Noto Serif TC', "PingFang TC", "Microsoft JhengHei", serif;
       background-color: #F7F4EF;
@@ -39,7 +39,7 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .thin-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
     .thin-scroll::-webkit-scrollbar-thumb { background: #D6D3D1; border-radius: 9999px; }
-     /* 長者友善大字體與簡約間距優化 */
+    /* 長者友善大字體與簡約間距優化 */
     html { font-size: 18px; }
     .text-\[10px\], .text-\[11px\], .text-xs { font-size: 0.95rem !important; line-height: 1.5 !important; }
     .text-sm { font-size: 1.05rem !important; line-height: 1.6 !important; }
@@ -83,15 +83,40 @@
   </header>
 
   <!-- ========================================================= -->
-  <!-- STEP 1：橫向商品選擇列 (內建預先渲染商品，打開第一秒即顯示) -->
+  <!-- STEP 1：橫向商品選擇列 (含電腦版左右滑動按鈕) -->
   <!-- ========================================================= -->
-  <section class="shrink-0 bg-white/70 border-b border-stone-200/70 px-3 sm:px-6 py-2">
+  <section class="shrink-0 bg-white/80 border-b border-stone-200 px-3 sm:px-6 py-3">
     <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between mb-1.5">
-        <span class="text-[11px] font-bold uppercase tracking-wider text-stone-500">Step 1. 選擇編織款式（左右滑動挑選）</span>
-        <button type="button" onclick="window.toggleColorModal(true)" class="sm:hidden text-[11px] font-bold text-amber-800 underline">🎨 檢視完整色卡</button>
+      <div class="flex items-center justify-between mb-2">
+        <span class="font-bold text-stone-700">Step 1. 選擇編織款式（可點選左右按鈕或滑動挑選）</span>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="window.toggleColorModal(true)" class="sm:hidden font-bold text-amber-800 underline">🎨 完整色卡</button>
+          <div class="hidden sm:flex items-center gap-1.5">
+            <button type="button" onclick="window.scrollProductList(-1)" class="bg-stone-800 hover:bg-stone-700 text-white font-bold px-3.5 py-1 rounded-xl shadow-sm transition flex items-center gap-1">
+              <span>◀ 左移</span>
+            </button>
+            <button type="button" onclick="window.scrollProductList(1)" class="bg-stone-800 hover:bg-stone-700 text-white font-bold px-3.5 py-1 rounded-xl shadow-sm transition flex items-center gap-1">
+              <span>右移 ▶</span>
+            </button>
+          </div>
+        </div>
       </div>
-      <div id="product-list" class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+
+      <div class="relative flex items-center gap-2">
+        <!-- 左側快捷大箭頭 (電腦版顯示) -->
+        <button type="button" onclick="window.scrollProductList(-1)" class="hidden md:flex shrink-0 w-10 h-16 bg-stone-200/90 hover:bg-stone-800 hover:text-white text-stone-800 rounded-xl items-center justify-center font-bold text-xl shadow-sm transition" title="向左滑動商品">
+          ‹
+        </button>
+
+        <!-- 商品清單捲軸區 -->
+        <div id="product-list" class="flex-1 flex gap-3 overflow-x-auto no-scrollbar py-1 scroll-smooth"></div>
+
+        <!-- 右側快捷大箭頭 (電腦版顯示) -->
+        <button type="button" onclick="window.scrollProductList(1)" class="hidden md:flex shrink-0 w-10 h-16 bg-stone-200/90 hover:bg-stone-800 hover:text-white text-stone-800 rounded-xl items-center justify-center font-bold text-xl shadow-sm transition" title="向右滑動商品">
+          ›
+        </button>
+      </div>
+    </div>
       <button type="button" onclick="window.selectProduct(1)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
         <span class="text-xl">🌼</span>
         <div class="min-w-0 flex-1">
@@ -262,6 +287,7 @@
           </div>
         </div>
 
+        
         <!-- 商品金額、數量與加入訂購車操作 -->
         <div class="space-y-2 pt-1 border-t border-stone-100">
           <div class="flex items-center justify-between">
@@ -802,25 +828,8 @@
           </div>
         </div>
 
-                   <div class="text-[11px] text-stone-500">
-              對色號有疑問或想確認訂貨？歡迎使用線上留言板詢問，賣家回覆時將自動寄送 Email 通知您！
-            </div>
-          </div>
-          <div class="flex items-center gap-1.5 shrink-0">
-            <button type="button" onclick="window.copyBankAccount()" class="bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-bold px-2.5 py-1.5 rounded-lg text-[11px] shadow-sm transition">
-              🏦 複製匯款帳號
-            </button>
-            <button type="button" onclick="window.toggleContactModal(true)" class="bg-stone-800 hover:bg-stone-700 text-white font-bold px-2.5 py-1.5 rounded-lg text-[11px] shadow-sm transition">
-              💬 留言板詢問
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </main>
-  <!-- ========================================================= -->
+    </main>
+<!-- ========================================================= -->
   <!-- 視窗最底部：訂製提醒與匯款排單備註區 -->
   <!-- ========================================================= -->
   <footer class="max-w-7xl w-full mx-auto px-3 sm:px-6 pb-8 pt-2">
@@ -844,7 +853,6 @@
       </div>
     </div>
   </footer>
-
   <!-- 全域浮動吐司提示 -->
   <div id="global-toast" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 bg-stone-900/95 text-white px-4 py-3 rounded-2xl shadow-2xl border border-stone-700 max-w-md w-[92%] text-xs leading-relaxed text-center transition-all modal-hidden">✅ 已成功為「雙色滾邊編織三角頭巾」新增 1 張樣式圖示！</div>
 
@@ -2113,8 +2121,7 @@ function compressImageFile(file, maxWidth = 800, quality = 0.78) {
 function findColorByCode(code) {
   return palette24.find(c => c.code === code) || palette20.find(c => c.code === code) || palette24[0];
 }
-
-  // 控制商品列左右平滑捲動
+// 控制商品列左右平滑捲動
 function scrollProductList(direction) {
   const listEl = byId('product-list');
   if (!listEl) return;
@@ -2122,6 +2129,8 @@ function scrollProductList(direction) {
   listEl.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 window.scrollProductList = scrollProductList;
+  
+  
 function selectProduct(prodId) {
   if (!Array.isArray(products) || products.length === 0) {
     products = defaultProducts;
@@ -2756,14 +2765,12 @@ function copyBankAccount() {
   showToast(`🏦 已複製匯款帳號：${storeSettings.bankAccount}`);
 }
 
-// =========================================================
-// 與 Google 試算表 (1kwxHfwrEQZOIqh64c2EMsTmPlERTT2PKaPVuSeLUQuA) 雙向同步核心
-// =========================================================
+// 1. 傳送資料至試算表時，連同留言板紀錄 (buyerMessages) 一起備份保存
 async function postToGasWebhook(payload) {
   const gasUrl = (storeSettings.gasWebhookUrl || DEFAULT_GAS_WEBHOOK_URL).trim();
-  if (!gasUrl || !gasUrl.startsWith('https://script.google.com/macros/s/AKfycbwkduFUZv6_30DNrGbNYS_RYtXHqmVl5pQl8lB3G4sSMKw950tlcE3zu76M1GUt7yG-Lw/exec')) return false;
+  if (!gasUrl || !gasUrl.startsWith('https://script.google.com/')) return false;
 
-  payload.syncState = { products, storeSettings };
+  payload.syncState = { products, storeSettings, buyerMessages, orders };
   try {
     await fetch(gasUrl, {
       method: 'POST',
@@ -2776,6 +2783,7 @@ async function postToGasWebhook(payload) {
     return false;
   }
 }
+
 // 2. 從試算表同步時，採用「智慧合併」而非直接覆蓋，確保剛發出的留言與回覆 100% 留存！
 async function syncFromGoogleSheet(showNotification = false) {
   const gasUrl = (storeSettings.gasWebhookUrl || DEFAULT_GAS_WEBHOOK_URL).trim();
@@ -2825,32 +2833,6 @@ async function syncFromGoogleSheet(showNotification = false) {
     }
   } catch (e) {
     if (showNotification) showToast('⚠️ 目前顯示本地存查紀錄（請確認 Apps Script 已建立新版本部署）');
-  }
-}    
-    // 👇 這裡已經完美幫你加上了打破快取的時間戳記 (t=...)，並修復了變數與括號
-    const res = await fetch(`${gasUrl}${sep}action=getData&t=${new Date().getTime()}`, {
-      method: 'GET',
-      redirect: 'follow'
-    });
-
-    if (!res.ok) throw new Error('讀取失敗');
-    const data = await res.json();
-    if (data && data.status === 'success') {
-      if (Array.isArray(data.products) && data.products.length > 0) products = data.products;
-      if (Array.isArray(data.orders)) orders = data.orders;
-      if (Array.isArray(data.buyerMessages)) buyerMessages = data.buyerMessages;
-      if (data.storeSettings) {
-        storeSettings = Object.assign(storeSettings, data.storeSettings);
-        if (!storeSettings.gasWebhookUrl) storeSettings.gasWebhookUrl = DEFAULT_GAS_WEBHOOK_URL;
-        if (!storeSettings.sellerNotifyEmail) storeSettings.sellerNotifyEmail = DEFAULT_SELLER_EMAIL;
-      }
-      saveAllToStorage(false);
-      selectProduct(currentProduct.id || products[0].id);
-      if (isAdminAuthenticated) renderAdminAll();
-      if (showNotification) showToast('✅ 已成功從 Google 試算表同步最新訂單、留言與商品！');
-    }
-  } catch (e) {
-    if (showNotification) showToast('⚠️ 無法從試算表讀取，請確認 Apps Script 已部署為「所有人 (Anyone)」可存取');
   }
 }
 
@@ -3239,7 +3221,60 @@ async function deleteOrder(idx) {
   showToast('已刪除該筆訂單紀錄');
 }
 
-renderAdminMessages
+// 4. 後台留言管理：明確顯示「已存查回覆內容」方塊，方便賣家隨時核對有沒有傳出去
+function renderAdminMessages() {
+  const container = byId('admin-panel-messages');
+  if (!container) return;
+
+  if (buyerMessages.length === 0) {
+    container.innerHTML = `<div class="bg-white p-10 rounded-2xl text-center text-stone-400 border border-stone-200">目前尚無買家詢問留言。</div>`;
+    return;
+  }
+
+  container.innerHTML = buyerMessages.map((m, idx) => `
+    <div class="bg-white p-5 rounded-2xl border-2 border-stone-200 space-y-3 shadow-sm">
+      <div class="flex flex-wrap justify-between items-start gap-2 border-b border-stone-200 pb-2.5">
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="bg-stone-800 text-white text-xs font-bold px-2.5 py-0.5 rounded-md">存查 #${buyerMessages.length - idx}</span>
+          <strong class="text-base text-stone-900">👤 ${m.sender}</strong>
+          <span class="bg-emerald-50 text-emerald-900 border border-emerald-300 px-2.5 py-0.5 rounded-lg font-bold num-font">📞 ${m.phone}</span>
+          <span class="bg-amber-50 text-amber-950 border border-amber-300 px-2.5 py-0.5 rounded-lg font-bold num-font">✉️ ${m.email}</span>
+          <span class="text-stone-500 num-font">🕒 ${m.time}</span>
+        </div>
+        <button type="button" onclick="window.deleteBuyerMessage(${idx})" class="text-red-600 hover:underline font-bold">刪除此則</button>
+      </div>
+
+      <div class="bg-[#FAF7F2] p-3.5 rounded-xl border border-stone-200">
+        <div class="text-xs font-bold text-stone-500 mb-1">💬 買家詢問內容：</div>
+        <p class="text-stone-900 font-medium whitespace-pre-line">${m.content}</p>
+      </div>
+
+      <!-- 賣家已傳出的回覆存查顯示區 -->
+      ${m.reply ? `
+        <div class="bg-emerald-50 border-2 border-emerald-300 p-3.5 rounded-xl text-emerald-950 space-y-1">
+          <div class="font-bold flex justify-between items-center">
+            <span>✅ 已儲存並寄出之回覆紀錄（前台留言板已同步公開）：</span>
+            <span class="text-xs text-stone-600 num-font">回覆時間：${m.replyTime || ''}</span>
+          </div>
+          <p class="font-bold whitespace-pre-line text-stone-900">${m.reply}</p>
+        </div>
+      ` : `<div class="text-xs font-bold text-amber-800">⏳ 此留言尚未回覆</div>`}
+
+      <div class="flex flex-col sm:flex-row gap-2 pt-1">
+        <input 
+          id="reply-input-${idx}" 
+          type="text" 
+          value="${m.reply || ''}" 
+          placeholder="輸入或修改回覆內容..." 
+          class="flex-1 bg-stone-50 border-2 border-stone-300 rounded-xl px-3.5 py-2.5"
+        >
+        <button type="button" onclick="window.replyBuyerMessage(${idx})" class="bg-stone-900 hover:bg-stone-800 text-white font-bold px-5 py-2.5 rounded-xl shrink-0 transition">
+          💬 ${m.reply ? '更新回覆 ＆ 重新寄信' : '儲存回覆 ＆ 自動寄信通知買家'}
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
 
 async function deleteBuyerMessage(idx) {
   const target = buyerMessages[idx];
@@ -3362,7 +3397,8 @@ function renderAdminProducts() {
     </div>
   `).join('');
 }
-  // 上移或下移商品順序 (-1 為往前移，+1 為往後移)
+
+// 上移或下移商品順序 (-1 為往前移，+1 為往後移)
 function moveProductOrder(index, direction) {
   const targetIndex = index + direction;
   if (targetIndex < 0 || targetIndex >= products.length) return;
