@@ -225,21 +225,18 @@
       <!-- 左欄 (佔 5 欄)：配色即時圖示 ＋ 多張原樣式圖庫展示與新增 ＋ 下單操作 -->
       <div class="lg:col-span-5 bg-white rounded-2xl p-3.5 sm:p-4 shadow-sm border border-stone-200/90 flex flex-col justify-between lg:h-full lg:overflow-y-auto thin-scroll space-y-3">
         
+        <!-- 頂部：切換「配色模擬圖」與「實品樣式圖庫」(僅供買家檢視，不開放前台修改) -->
         <div class="flex flex-wrap justify-between items-center gap-2 border-b border-stone-100 pb-2">
           <div class="inline-flex bg-stone-100 p-1 rounded-xl">
-            <button type="button" id="btn-tab-svg" onclick="window.switchStageTab('svg')" class="px-2.5 py-1 rounded-lg text-xs font-bold transition text-stone-500">
+            <button type="button" id="btn-tab-svg" onclick="switchStageTab('svg')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition bg-white text-stone-900 shadow-sm">
               ✨ 選色模擬圖
             </button>
-            <button type="button" id="btn-tab-gallery" onclick="window.switchStageTab('gallery')" class="px-2.5 py-1 rounded-lg text-xs font-bold transition bg-white text-stone-900 shadow-sm flex items-center gap-1">
+            <button type="button" id="btn-tab-gallery" onclick="switchStageTab('gallery')" class="px-3 py-1.5 rounded-lg text-xs font-bold transition text-stone-500 flex items-center gap-1">
               <span>🖼️ 原本樣式圖示</span>
               <span id="gallery-count-badge" class="num-font bg-amber-100 text-amber-900 px-1.5 rounded-full text-[10px]">1</span>
             </button>
           </div>
-
-          <label class="cursor-pointer text-[11px] font-bold text-amber-900 bg-amber-50 hover:bg-amber-100 px-2.5 py-1 rounded-lg border border-amber-200 transition flex items-center gap-1">
-            <span>＋ 新增樣式圖示(可多選)</span>
-            <input type="file" accept="image/*" multiple="" onchange="window.handleAddStyleImages(event)" class="hidden">
-          </label>
+          <span class="text-[11px] text-stone-400 font-medium">💡 點擊圖片可放大檢視</span>
         </div>
 
         <!-- 舞台顯示區 -->
@@ -270,19 +267,15 @@
     </div>
           </div>
 
-          <!-- 分頁 B：原本樣式圖示多圖展示櫃 -->
-          <div id="stage-tab-gallery" class="w-full flex flex-col items-center justify-between pt-4">
+          <!-- 分頁 B：原本樣式圖示多圖展示櫃 (僅供買家左右切換與點擊放大) -->
+          <div id="stage-tab-gallery" class="modal-hidden w-full flex flex-col items-center justify-between pt-4">
             <div class="relative w-full h-44 sm:h-48 flex items-center justify-center bg-white/70 rounded-xl overflow-hidden border border-stone-200/80">
-              <img id="gallery-main-img" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22420%22%20viewBox%3D%220%200%20600%20420%22%3E%0A%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22420%22%20rx%3D%2224%22%20fill%3D%22%23F5EFE6%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22190%22%20r%3D%22105%22%20fill%3D%22%239A6B45%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%226%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22190%22%20r%3D%2255%22%20fill%3D%22%23EFECE6%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%224%22%20stroke-dasharray%3D%228%206%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22345%22%20text-anchor%3D%22middle%22%20font-family%3D%22serif%22%20font-size%3D%2224%22%20font-weight%3D%22bold%22%20fill%3D%22%23292524%22%3E%E5%A4%A7%E7%9C%BC%E6%80%AA%E7%8D%B8%E9%80%A0%E5%9E%8B%E7%BD%AE%E7%89%A9%E5%A2%8A%20(%E5%9B%BA%E5%AE%9A%E9%85%8D%E8%89%B2)%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22378%22%20text-anchor%3D%22middle%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%2378716c%22%3E%E7%B6%93%E5%85%B8%E7%84%A6%E7%B3%96%E5%92%96%E5%95%A1%E8%89%B2%E9%85%8D%E7%AB%8B%E9%AB%94%E5%A4%A7%E7%9C%BC%EF%BD%9CMomhandmade.%20%E5%AF%A6%E5%93%81%E6%A8%A3%E5%BC%8F%E5%9C%96%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E" alt="商品原本樣式圖示" class="max-h-full max-w-full object-contain cursor-zoom-in" onclick="window.openLightbox()">
-              <button type="button" onclick="window.stepGallery(-1)" class="absolute left-2 bg-stone-900/60 hover:bg-stone-900 text-white w-7 h-7 rounded-full text-xs flex items-center justify-center">‹</button>
-              <button type="button" onclick="window.stepGallery(1)" class="absolute right-2 bg-stone-900/60 hover:bg-stone-900 text-white w-7 h-7 rounded-full text-xs flex items-center justify-center">›</button>
-              <button type="button" onclick="window.deleteCurrentStyleImage()" class="absolute bottom-2 right-2 bg-red-600/80 hover:bg-red-600 text-white text-[10px] px-2 py-0.5 rounded-md">刪除此圖</button>
+              <img id="gallery-main-img" src="" alt="商品原本樣式圖示" class="max-h-full max-w-full object-contain cursor-zoom-in" onclick="openLightbox()">
+              <button type="button" onclick="stepGallery(-1)" class="absolute left-2 bg-stone-900/60 hover:bg-stone-900 text-white w-8 h-8 rounded-full text-sm flex items-center justify-center">‹</button>
+              <button type="button" onclick="stepGallery(1)" class="absolute right-2 bg-stone-900/60 hover:bg-stone-900 text-white w-8 h-8 rounded-full text-sm flex items-center justify-center">›</button>
             </div>
-            <div class="w-full mt-2 flex items-center gap-2 overflow-x-auto no-scrollbar py-1" id="gallery-thumbs">
-    <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22420%22%20viewBox%3D%220%200%20600%20420%22%3E%0A%20%20%20%20%3Crect%20width%3D%22600%22%20height%3D%22420%22%20rx%3D%2224%22%20fill%3D%22%23F5EFE6%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22190%22%20r%3D%22105%22%20fill%3D%22%239A6B45%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%226%22%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%22300%22%20cy%3D%22190%22%20r%3D%2255%22%20fill%3D%22%23EFECE6%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%224%22%20stroke-dasharray%3D%228%206%22%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22345%22%20text-anchor%3D%22middle%22%20font-family%3D%22serif%22%20font-size%3D%2224%22%20font-weight%3D%22bold%22%20fill%3D%22%23292524%22%3E%E5%A4%A7%E7%9C%BC%E6%80%AA%E7%8D%B8%E9%80%A0%E5%9E%8B%E7%BD%AE%E7%89%A9%E5%A2%8A%20(%E5%9B%BA%E5%AE%9A%E9%85%8D%E8%89%B2)%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%22300%22%20y%3D%22378%22%20text-anchor%3D%22middle%22%20font-family%3D%22sans-serif%22%20font-size%3D%2215%22%20fill%3D%22%2378716c%22%3E%E7%B6%93%E5%85%B8%E7%84%A6%E7%B3%96%E5%92%96%E5%95%A1%E8%89%B2%E9%85%8D%E7%AB%8B%E9%AB%94%E5%A4%A7%E7%9C%BC%EF%BD%9CMomhandmade.%20%E5%AF%A6%E5%93%81%E6%A8%A3%E5%BC%8F%E5%9C%96%3C%2Ftext%3E%0A%20%20%3C%2Fsvg%3E" onclick="window.setGalleryIndex(0)" class="w-12 h-12 rounded-lg object-cover cursor-pointer border-2 shrink-0 transition border-stone-900 scale-105 shadow">
-  </div>
+            <div class="w-full mt-2 flex items-center gap-2 overflow-x-auto no-scrollbar py-1" id="gallery-thumbs"></div>
           </div>
-        </div>
         <!-- 商品金額、數量與加入訂購車操作 -->
         <div class="space-y-2 pt-1 border-t border-stone-100">
           <div class="flex items-center justify-between">
@@ -880,26 +873,44 @@
               </button>
             </div>
 
-           <!-- 超商取貨：智慧門市搜尋清單（點擊即自動填入店名與地址）＋ Google 地圖 -->
+           <!-- 超商取貨：精簡三步驟快速點選門市自動帶入 -->
             <div id="shipping-cvs-box" class="space-y-3 pt-1">
-              <div class="flex flex-wrap items-center justify-between gap-2">
-                <span class="text-xs font-bold text-stone-700">📍 Step A. 搜尋並點選超商（點選後自動填入店名與地址）：</span>
-                <div class="flex flex-wrap gap-1.5">
-                  <button type="button" onclick="window.searchMapStore('7-ELEVEN')" class="text-xs bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 px-2.5 py-1 rounded-lg font-bold transition">🔎 搜 7-11</button>
-                  <button type="button" onclick="window.searchMapStore('全家便利商店')" class="text-xs bg-emerald-100 hover:bg-emerald-200 text-emerald-950 border border-emerald-300 px-2.5 py-1 rounded-lg font-bold transition">🔎 搜 全家</button>
-                  <button type="button" onclick="window.locateNearbyCvs()" class="text-xs bg-stone-800 hover:bg-stone-700 text-white px-2.5 py-1 rounded-lg font-bold transition">📍 找我附近的超商</button>
-                </div>
+              <!-- 1. 選擇超商品牌與定位 -->
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" id="cvs-brand-711" onclick="selectCvsBrand('7-ELEVEN')" class="py-2 px-2 rounded-xl font-bold text-xs border-2 border-amber-500 bg-amber-100 text-amber-950 shadow-sm transition">
+                  🏪 查 7-11
+                </button>
+                <button type="button" id="cvs-brand-fami" onclick="selectCvsBrand('全家')" class="py-2 px-2 rounded-xl font-bold text-xs border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition">
+                  🏪 查 全家
+                </button>
+                <button type="button" onclick="locateNearbyCvs()" class="py-2 px-2 rounded-xl font-bold text-xs bg-emerald-700 hover:bg-emerald-600 text-white shadow-sm transition">
+                  📍 附近超商
+                </button>
               </div>
 
-              <!-- 關鍵字搜尋超商定位 -->
+              <!-- 2. 輸入地區或路名快速篩選 -->
               <div class="flex gap-1.5">
-                <input id="map-search-input" type="text" onkeydown="if(event.key==='Enter') window.updateGoogleMap()" placeholder="輸入區域或路名＋超商（例：大雅區 7-11、逢甲 全家）" class="flex-1 text-xs bg-white border-2 border-stone-300 rounded-xl px-3 py-2 focus:outline-none focus:border-stone-800">
-                <button type="button" onclick="window.updateGoogleMap()" class="bg-stone-800 hover:bg-stone-700 text-white text-xs font-bold px-4 py-2 rounded-xl shrink-0 shadow-sm transition">🔍 搜尋門市</button>
+                <input id="map-search-input" type="text" onkeydown="if(event.key==='Enter') updateGoogleMap()" placeholder="輸入鄉鎮區或路名（例：大雅區、中清路）" class="flex-1 text-xs bg-white border-2 border-stone-300 rounded-xl px-3 py-2 focus:outline-none focus:border-stone-800">
+                <button type="button" onclick="updateGoogleMap()" class="bg-stone-800 hover:bg-stone-700 text-white text-xs font-bold px-4 py-2 rounded-xl shrink-0 shadow-sm">
+                  🔍 找門市
+                </button>
               </div>
 
-              <!-- 點擊即自動帶入的「超商門市搜尋結果清單」 -->
-              <div id="cvs-store-results" class="modal-hidden bg-white border-2 border-amber-300 rounded-xl p-2.5 space-y-1.5 max-h-48 overflow-y-auto thin-scroll shadow-inner"></div>
+              <!-- 點擊即自動帶入的「超商門市快速點選清單」 -->
+              <div id="cvs-store-results" class="modal-hidden bg-amber-50/90 border-2 border-amber-300 rounded-xl p-2.5 space-y-1.5 max-h-48 overflow-y-auto thin-scroll"></div>
 
+              <!-- Google Maps 預覽地圖 (高度精簡，方便確認位置) -->
+              <div class="w-full h-36 rounded-xl overflow-hidden border border-stone-300 bg-stone-100 relative">
+                <iframe id="google-map-iframe" class="w-full h-full border-0" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=台中市+7-ELEVEN&hl=zh-TW&z=14&output=embed"></iframe>
+              </div>
+
+              <!-- 3. 自動帶入之店名與地址結果欄位 -->
+              <div class="bg-white p-3 rounded-xl border-2 border-stone-200 space-y-2">
+                <div class="text-xs font-bold text-stone-700">✅ 收件超商門市與地址（點選上方門市即自動填入）：</div>
+                <input id="cvs-store-name" type="text" placeholder="超商別與店名 * (例：7-ELEVEN 雅環門市)" class="w-full text-xs font-bold bg-stone-50 border border-stone-300 rounded-xl px-3 py-2 focus:bg-white focus:border-stone-800">
+                <input id="cvs-store-address" type="text" placeholder="超商門市地址 * (點選上方門市清單自動帶入)" class="w-full text-xs bg-stone-50 border border-stone-300 rounded-xl px-3 py-2 focus:bg-white focus:border-stone-800">
+              </div>
+            </div>
               <!-- Google Maps 內嵌地圖 -->
               <div class="w-full h-44 rounded-xl overflow-hidden border border-stone-300 bg-stone-100 relative">
                 <iframe id="google-map-iframe" class="w-full h-full border-0" loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=台灣+7-ELEVEN+便利商店&hl=zh-TW&z=14&output=embed"></iframe>
@@ -2482,19 +2493,219 @@ function setShippingMethod(method) {
   renderCart();
 }
 
-function searchMapStore(brand) {
-  const input = byId('map-search-input');
-  if (input) input.value = `台灣 ${brand} 門市`;
+let currentCvsBrand = '7-ELEVEN';
+
+// 切換 7-11 或 全家 並立即搜尋
+function selectCvsBrand(brand) {
+  currentCvsBrand = brand;
+  const btn711 = document.getElementById('cvs-brand-711');
+  const btnFami = document.getElementById('cvs-brand-fami');
+  if (btn711) {
+    btn711.className = brand === '7-ELEVEN'
+      ? 'py-2 px-2 rounded-xl font-bold text-xs border-2 border-amber-500 bg-amber-100 text-amber-950 shadow-sm transition'
+      : 'py-2 px-2 rounded-xl font-bold text-xs border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition';
+  }
+  if (btnFami) {
+    btnFami.className = brand === '全家'
+      ? 'py-2 px-2 rounded-xl font-bold text-xs border-2 border-emerald-500 bg-emerald-100 text-emerald-950 shadow-sm transition'
+      : 'py-2 px-2 rounded-xl font-bold text-xs border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition';
+  }
   updateGoogleMap();
 }
 
-function updateGoogleMap() {
-  const input = byId('map-search-input');
-  const q = (input && input.value.trim()) || '台灣 7-ELEVEN 門市';
-  const iframe = byId('google-map-iframe');
-  if (iframe) iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(q)}&hl=zh-TW&z=15&output=embed`;
+function searchMapStore(brand) {
+  selectCvsBrand(brand.includes('全家') ? '全家' : '7-ELEVEN');
 }
 
+// 根據輸入的地區/路名，自動搜尋附近的 7-11 或 全家 門市清單
+async function updateGoogleMap() {
+  const input = document.getElementById('map-search-input');
+  const rawArea = (input && input.value.trim()) || '台中市大雅區';
+  const cleanArea = rawArea.replace(/7-ELEVEN|7-11|全家便利商店|全家|便利商店|門市/gi, '').trim() || '台中市';
+  const searchQuery = `${cleanArea} ${currentCvsBrand}`;
+
+  const iframe = document.getElementById('google-map-iframe');
+  if (iframe) {
+    iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(searchQuery)}&hl=zh-TW&z=15&output=embed`;
+  }
+
+  const resultsBox = document.getElementById('cvs-store-results');
+  if (!resultsBox) return;
+  resultsBox.classList.remove('modal-hidden');
+  resultsBox.innerHTML = `<div class="text-center py-3 text-xs text-stone-600 font-bold">⏳ 正在搜尋「${cleanArea}」附近的 ${currentCvsBrand} 門市...</div>`;
+
+  try {
+    // 1. 先取得該地區/路名的中心座標
+    const geoRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=tw&accept-language=zh-TW&q=${encodeURIComponent(cleanArea)}`);
+    const geoData = await geoRes.json();
+
+    if (Array.isArray(geoData) && geoData.length > 0) {
+      const lat = parseFloat(geoData[0].lat);
+      const lon = parseFloat(geoData[0].lon);
+      await fetchNearbyStoresByCoords(lat, lon, cleanArea);
+    } else {
+      // 備援直接關鍵字搜尋
+      const directRes = await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=10&countrycodes=tw&accept-language=zh-TW&q=${encodeURIComponent(searchQuery)}`);
+      const directList = await directRes.json();
+      renderFallbackNominatimStores(directList, cleanArea);
+    }
+  } catch (e) {
+    resultsBox.innerHTML = `<div class="text-xs text-stone-600 p-2">💡 請輸入更明確的區域或路名（例如：<code>大雅區中清路</code>），或直接於下方欄位填寫店名。</div>`;
+  }
+}
+
+// 透過 GPS 定位買家目前位置附近的 7-11 與 全家
+function locateNearbyCvs() {
+  const resultsBox = document.getElementById('cvs-store-results');
+  if (!navigator.geolocation) {
+    showToast('⚠️ 瀏覽器不支援定位，請直接輸入區域名稱或路名搜尋');
+    return;
+  }
+  if (resultsBox) {
+    resultsBox.classList.remove('modal-hidden');
+    resultsBox.innerHTML = `<div class="text-center py-3 text-xs text-stone-600 font-bold">📍 正在定位您附近的 ${currentCvsBrand} 門市...</div>`;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      const lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      const iframe = document.getElementById('google-map-iframe');
+      if (iframe) {
+        iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(currentCvsBrand)}&ll=${lat},${lon}&hl=zh-TW&z=16&output=embed`;
+      }
+      fetchNearbyStoresByCoords(lat, lon, '您目前位置');
+    },
+    () => {
+      showToast('⚠️ 無法取得定位權限，請在搜尋框輸入鄉鎮區或路名查詢');
+      updateGoogleMap();
+    }
+  );
+}
+
+// 根據經緯度精準抓取周邊 1.8 公里內的 7-11 或 全家門市與地址
+async function fetchNearbyStoresByCoords(lat, lon, areaLabel) {
+  const resultsBox = document.getElementById('cvs-store-results');
+  const brandKeyword = currentCvsBrand === '全家' ? '全家|FamilyMart' : '7-ELEVEN|7-Eleven|統一超商';
+  try {
+    const query = `[out:json][timeout:10];(node["shop"="convenience"]["name"~"${brandKeyword}",i](around:1800,${lat},${lon});way["shop"="convenience"]["name"~"${brandKeyword}",i](around:1800,${lat},${lon});node["shop"="convenience"]["brand"~"${brandKeyword}",i](around:1800,${lat},${lon}););out body center 16;`;
+    const res = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
+    const data = await res.json();
+    const elements = (data && data.elements) || [];
+
+    if (elements.length === 0) {
+      resultsBox.innerHTML = `<div class="text-xs text-stone-600 p-2">在「${areaLabel}」附近暫未查到對應門市，請嘗試輸入鄰近路名或切換 7-11 / 全家。</div>`;
+      return;
+    }
+
+    const stores = elements.map(el => {
+      const t = el.tags || {};
+      const branch = t.branch || t['branch:zh'] || '';
+      const rawName = t['name:zh'] || t.name || currentCvsBrand;
+      let storeName = rawName.includes(branch) ? rawName : `${currentCvsBrand} ${branch}`.trim();
+      if (!storeName.includes('門市') && branch) storeName += '門市';
+
+      const city = t['addr:city'] || t['addr:county'] || '';
+      const dist = t['addr:district'] || t['addr:suburb'] || '';
+      const street = t['addr:street'] || t['addr:place'] || '';
+      const num = t['addr:housenumber'] ? `${t['addr:housenumber']}號` : '';
+      const fullAddr = t['addr:full'] || `${city}${dist}${street}${num}`.trim() || `${areaLabel}周邊（點選後自動定位地圖確認門牌）`;
+
+      return {
+        storeName,
+        addr: fullAddr,
+        lat: el.lat || (el.center && el.center.lat) || lat,
+        lon: el.lon || (el.center && el.center.lon) || lon
+      };
+    });
+
+    renderCvsQuickCards(stores);
+  } catch (err) {
+    resultsBox.innerHTML = `<div class="text-xs text-stone-600 p-2">查詢連線繁忙，請再點選一次「🔍 找門市」或直接於下方輸入店名。</div>`;
+  }
+}
+
+function renderFallbackNominatimStores(list, areaLabel) {
+  const resultsBox = document.getElementById('cvs-store-results');
+  if (!Array.isArray(list) || list.length === 0) {
+    resultsBox.innerHTML = `<div class="text-xs text-stone-600 p-2">找不到「${areaLabel}」的門市，請輸入更明確的「縣市區＋路名」（例：<code>台中市大雅區中清路</code>）。</div>`;
+    return;
+  }
+  const stores = list.map(item => {
+    const a = item.address || {};
+    const title = item.name || currentCvsBrand;
+    const addr = `${a.city || a.county || ''}${a.suburb || a.town || a.city_district || ''}${a.road || ''}${a.house_number ? a.house_number + '號' : ''}` || item.display_name;
+    return { storeName: title, addr, lat: item.lat, lon: item.lon };
+  });
+  renderCvsQuickCards(stores);
+}
+
+// 渲染一鍵點選門市清單
+function renderCvsQuickCards(stores) {
+  const resultsBox = document.getElementById('cvs-store-results');
+  if (!resultsBox) return;
+
+  resultsBox.innerHTML = `
+    <div class="text-xs font-bold text-amber-950 pb-1 border-b border-amber-200 flex justify-between items-center">
+      <span>👇 點擊下方門市，立即自動填入店名與地址：</span>
+      <button type="button" onclick="document.getElementById('cvs-store-results').classList.add('modal-hidden')" class="text-stone-500 hover:text-stone-800">收合 ✕</button>
+    </div>
+  ` + stores.map(s => {
+    const safeName = (s.storeName || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    const safeAddr = (s.addr || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    return `
+      <button 
+        type="button" 
+        onclick="pickCvsStoreAndFill('${safeName}', '${safeAddr}', '${s.lat || ''}', '${s.lon || ''}')" 
+        class="w-full text-left p-2.5 rounded-xl bg-white hover:bg-emerald-50 border border-amber-200 hover:border-emerald-500 transition flex items-center justify-between gap-2 shadow-sm"
+      >
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold text-stone-900 truncate">🏪 ${s.storeName}</div>
+          <div class="text-[11px] text-stone-600 truncate mt-0.5">📍 ${s.addr}</div>
+        </div>
+        <span class="shrink-0 bg-stone-900 text-white text-xs font-bold px-3 py-1 rounded-lg">
+          選此門市
+        </span>
+      </button>
+    `;
+  }).join('');
+}
+
+// 點擊門市卡片後：1.自動帶入店名與地址 2.若原本無詳細門牌則自動反向查詢門牌補齊 3.更新地圖中心
+async function pickCvsStoreAndFill(storeName, storeAddr, lat, lon) {
+  const nameInput = document.getElementById('cvs-store-name');
+  const addrInput = document.getElementById('cvs-store-address');
+
+  if (nameInput) nameInput.value = storeName;
+  if (addrInput) addrInput.value = storeAddr;
+
+  // 若地址尚未包含詳細路名門牌且有經緯度，自動透過座標反向查出台灣門牌地址並填入
+  if (lat && lon && storeAddr.includes('周邊')) {
+    try {
+      const revRes = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&accept-language=zh-TW`);
+      const revData = await revRes.json();
+      if (revData && revData.address) {
+        const a = revData.address;
+        const fullAddr = `${a.city || a.county || ''}${a.suburb || a.city_district || a.town || ''}${a.road || ''}${a.house_number ? a.house_number + '號' : ''}`;
+        if (fullAddr && addrInput) addrInput.value = fullAddr;
+      }
+    } catch (e) {}
+  }
+
+  const iframe = document.getElementById('google-map-iframe');
+  if (iframe) {
+    const mapQ = `${storeName} ${addrInput ? addrInput.value : storeAddr}`;
+    iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(mapQ)}&hl=zh-TW&z=17&output=embed`;
+  }
+
+  showToast(`✅ 已自動填入「${storeName}」與地址！`);
+}
+
+window.selectCvsBrand = selectCvsBrand;
+window.searchMapStore = searchMapStore;
+window.updateGoogleMap = updateGoogleMap;
+window.locateNearbyCvs = locateNearbyCvs;
+window.pickCvsStoreAndFill = pickCvsStoreAndFill;
 function renderCart() {
   const checkoutSection = byId('cart-checkout-section');
   setText('cart-badge', String(cart.length));
@@ -3154,43 +3365,96 @@ async function replyBuyerMessage(idx) {
 }
 
 function renderAdminProducts() {
-  const container = byId('admin-products-list-container');
+  const container = document.getElementById('admin-products-list-container') || document.getElementById('admin-panel-products');
   if (!container) return;
 
-  container.innerHTML = products.map((p) => `
-    <div class="bg-white p-4 rounded-2xl border border-stone-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
-      <div class="space-y-1.5 flex-1 min-w-0 w-full">
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="text-xl">${p.icon}</span>
-          <input id="admin-name-${p.id}" type="text" value="${p.name}" class="text-xs sm:text-sm font-bold text-stone-800 bg-stone-50 border border-stone-300 rounded-lg px-2.5 py-1 w-48 sm:w-56">
-          <span class="text-xs text-stone-500">NT$</span>
-          <input id="admin-price-${p.id}" type="number" min="0" value="${p.price}" class="w-20 text-xs font-bold num-font bg-stone-50 border border-stone-300 rounded-lg px-2 py-1">
-          <button type="button" onclick="window.updateProductInfo(${p.id})" class="bg-stone-800 hover:bg-stone-700 text-white text-xs font-bold px-3 py-1 rounded-lg transition">
-            💾 儲存名稱與價格
-          </button>
-        </div>
-        <div class="text-xs text-stone-500">
-          選色部位：${p.parts.join('、')} ｜ 目前樣式圖示數量：<strong>${(p.images || []).length} 張</strong>
-        </div>
-      </div>
-
-      <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto shrink-0">
-        <button type="button" onclick="window.toggleProductCustomizable(${p.id})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${p.customizable ? 'bg-emerald-600 text-white' : 'bg-stone-200 text-stone-700'}">
-          ${p.customizable ? '🎨 開放選色' : '🔒 固定配色'}
-        </button>
-
-        <label class="cursor-pointer bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold px-3 py-1.5 rounded-xl transition">
-          ＋ 新增樣式圖示
-          <input type="file" accept="image/*" multiple onchange="window.handleAddStyleImages(event, ${p.id})" class="hidden">
-        </label>
-
-        <button type="button" onclick="window.deleteProduct(${p.id})" class="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-bold px-2.5 py-1.5 rounded-xl transition">
-          刪除
+  container.innerHTML = products.map((p, idx) => {
+    // 產生後台專屬的樣式圖示縮圖管理列（每張圖皆可單獨點擊 ✕ 刪除）
+    const thumbsHtml = (p.images || []).map((imgSrc, imgIdx) => `
+      <div class="relative group shrink-0 w-16 h-16 rounded-xl border border-stone-300 overflow-hidden bg-stone-50 shadow-sm">
+        <img src="${imgSrc}" class="w-full h-full object-cover cursor-zoom-in" onclick="document.getElementById('lightbox-img').src='${imgSrc}'; document.getElementById('lightbox-modal').classList.remove('modal-hidden');" title="點擊放大檢視">
+        <button 
+          type="button" 
+          onclick="deleteProductImageFromAdmin(${p.id}, ${imgIdx})" 
+          class="absolute top-0.5 right-0.5 bg-red-600 hover:bg-red-700 text-white w-5 h-5 rounded-full text-[11px] font-bold flex items-center justify-center shadow"
+          title="刪除此張圖示"
+        >
+          ✕
         </button>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+
+    return `
+      <div class="bg-white p-4 rounded-2xl border-2 border-stone-200 flex flex-col gap-3 shadow-sm">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+          <div class="flex flex-wrap items-center gap-2 flex-1">
+            <span class="bg-stone-800 text-amber-300 text-xs font-extrabold px-2.5 py-1 rounded-lg num-font">
+              排序 #${idx + 1}
+            </span>
+            <span class="text-2xl">${p.icon}</span>
+            <input id="admin-name-${p.id}" type="text" value="${p.name}" class="text-sm font-bold text-stone-800 bg-stone-50 border-2 border-stone-300 rounded-xl px-3 py-1.5 w-48 sm:w-60">
+            <span class="text-sm font-bold text-stone-600">NT$</span>
+            <input id="admin-price-${p.id}" type="number" min="0" value="${p.price}" class="w-24 text-sm font-bold num-font bg-stone-50 border-2 border-stone-300 rounded-xl px-3 py-1.5">
+            <button type="button" onclick="updateProductInfo(${p.id})" class="bg-stone-800 hover:bg-stone-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
+              💾 儲存名稱與價格
+            </button>
+          </div>
+
+          <!-- 排序與權限操作按鈕 -->
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <div class="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200">
+              <button type="button" onclick="moveProductToTop(${idx})" ${idx === 0 ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg text-xs font-bold ${idx === 0 ? 'text-stone-300' : 'bg-white hover:bg-amber-100 text-stone-800 shadow-sm'}">⏫ 置頂</button>
+              <button type="button" onclick="moveProductOrder(${idx}, -1)" ${idx === 0 ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg text-xs font-bold ${idx === 0 ? 'text-stone-300' : 'bg-white hover:bg-stone-200 text-stone-800 shadow-sm'}">⬆ 上移</button>
+              <button type="button" onclick="moveProductOrder(${idx}, 1)" ${idx === products.length - 1 ? 'disabled' : ''} class="px-2.5 py-1 rounded-lg text-xs font-bold ${idx === products.length - 1 ? 'text-stone-300' : 'bg-white hover:bg-stone-200 text-stone-800 shadow-sm'}">⬇ 下移</button>
+            </div>
+
+            <button type="button" onclick="toggleProductCustomizable(${p.id})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${p.customizable ? 'bg-emerald-600 text-white' : 'bg-stone-200 text-stone-700'}">
+              ${p.customizable ? '🎨 開放選色' : '🔒 固定配色'}
+            </button>
+
+            <button type="button" onclick="deleteProduct(${p.id})" class="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-bold px-3 py-1.5 rounded-xl transition">
+              刪除商品
+            </button>
+          </div>
+        </div>
+
+        <!-- 後台專屬：樣式圖檔管理列 (新增/刪除圖示皆在此處操作) -->
+        <div class="bg-[#FAF7F2] p-3 rounded-xl border border-stone-200/80 flex flex-wrap items-center gap-3">
+          <div class="text-xs font-bold text-stone-600 shrink-0">
+            🖼️ 樣式圖檔 (${(p.images || []).length}張)：
+          </div>
+          <div class="flex items-center gap-2 overflow-x-auto thin-scroll py-1 flex-1">
+            ${thumbsHtml}
+            <label class="cursor-pointer shrink-0 w-16 h-16 rounded-xl border-2 border-dashed border-amber-400 bg-amber-50 hover:bg-amber-100 text-amber-900 flex flex-col items-center justify-center text-[11px] font-bold transition">
+              <span class="text-base leading-none">＋</span>
+              <span>新增圖檔</span>
+              <input type="file" accept="image/*" multiple onchange="handleAddStyleImages(event, ${p.id})" class="hidden">
+            </label>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
+
+// 後台專屬：刪除指定商品的單張樣式圖片
+function deleteProductImageFromAdmin(prodId, imgIdx) {
+  const prod = products.find(p => p.id === prodId);
+  if (!prod || !Array.isArray(prod.images)) return;
+  if (prod.images.length <= 1) {
+    showToast('⚠️ 每項商品至少需保留 1 張基本樣式圖示！請先新增其他圖片後再刪除此張。');
+    return;
+  }
+  prod.images.splice(imgIdx, 1);
+  if (currentProduct.id === prodId) {
+    galleryIndex = 0;
+  }
+  saveAllToStorage(true);
+  renderAdminProducts();
+  renderAll();
+  showToast('🗑️ 已從後台刪除該張樣式圖檔！');
+}
+window.deleteProductImageFromAdmin = deleteProductImageFromAdmin;
 
 function updateProductInfo(prodId) {
   const prod = products.find(p => p.id === prodId);
