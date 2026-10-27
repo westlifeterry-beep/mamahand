@@ -108,7 +108,7 @@
           ‹
         </button>
 
-        <!-- 商品清單捲軸區 -->
+       <!-- 商品清單捲軸區 (加上強制橫向 nowrap 不換行樣式，徹底消除縱列) -->
         <div id="product-list" class="flex flex-row flex-nowrap overflow-x-auto no-scrollbar py-2 w-full scroll-smooth select-none gap-3" style="display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; overflow-x: auto !important; -webkit-overflow-scrolling: touch;"></div>
 
         <!-- 右側快捷大箭頭 (電腦版顯示) -->
@@ -2260,6 +2260,7 @@ function renderAll() {
       </button>
     `;
   }).join(''));
+  
     const isSelected = p.id === currentProduct.id;
     const badgeText = p.customizable ? `${(p.parts || []).length}部位選色` : '固定配色';
     const badgeClass = p.customizable
