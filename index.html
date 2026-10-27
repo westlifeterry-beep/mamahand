@@ -39,35 +39,13 @@
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     .thin-scroll::-webkit-scrollbar { width: 5px; height: 5px; }
     .thin-scroll::-webkit-scrollbar-thumb { background: #D6D3D1; border-radius: 9999px; }
-    /* 長者友善大字體與簡約間距優化 */
+ /* 長者友善大字體與簡約間距優化 */
     html { font-size: 18px; }
     .text-\[10px\], .text-\[11px\], .text-xs { font-size: 0.95rem !important; line-height: 1.5 !important; }
     .text-sm { font-size: 1.05rem !important; line-height: 1.6 !important; }
     .text-base { font-size: 1.15rem !important; }
     .text-lg { font-size: 1.3rem !important; }
     input, select, textarea, button { font-size: 1rem !important; }
-  /* 強制 Step 1 商品列在電腦/平板/手機皆維持單行橫排與固定高度 */
-    #product-list {
-      display: flex !important;
-      flex-direction: row !important;
-      flex-wrap: nowrap !important;
-      align-items: center !important;
-      overflow-x: auto !important;
-      overflow-y: hidden !important;
-      height: 80px !important;
-      gap: 12px !important;
-      -webkit-overflow-scrolling: touch;
-      scroll-behavior: smooth;
-    }
-    .prod-card-item {
-      flex: 0 0 230px !important;
-      width: 230px !important;
-      height: 68px !important;
-      display: flex !important;
-      flex-direction: row !important;
-      align-items: center !important;
-      box-sizing: border-box !important;
-    }
   </style>
 <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.bottom-2{bottom:0.5rem}.bottom-4{bottom:1rem}.left-1\/2{left:50%}.left-2{left:0.5rem}.left-3{left:0.75rem}.right-2{right:0.5rem}.right-3{right:0.75rem}.top-0{top:0px}.top-2\.5{top:0.625rem}.z-10{z-index:10}.z-30{z-index:30}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1\.5{margin-bottom:0.375rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mb-4{margin-bottom:1rem}.ml-1{margin-left:0.25rem}.mt-1\.5{margin-top:0.375rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-14{height:3.5rem}.h-2{height:0.5rem}.h-44{height:11rem}.h-7{height:1.75rem}.h-\[92vh\]{height:92vh}.h-full{height:100%}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}.h-2\.5{height:0.625rem}.h-40{height:10rem}.h-6{height:1.5rem}.h-9{height:2.25rem}.h-36{height:9rem}.max-h-56{max-height:14rem}.max-h-\[92vh\]{max-height:92vh}.max-h-full{max-height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.min-h-\[220px\]{min-height:220px}.w-screen{width:100vw}.w-14{width:3.5rem}.w-2{width:0.5rem}.w-7{width:1.75rem}.w-\[92\%\]{width:92%}.w-full{width:100%}.w-10{width:2.5rem}.w-11{width:2.75rem}.w-12{width:3rem}.w-2\.5{width:0.625rem}.w-40{width:10rem}.w-6{width:1.5rem}.w-9{width:2.25rem}.w-20{width:5rem}.w-48{width:12rem}.w-44{width:11rem}.min-w-0{min-width:0px}.min-w-\[185px\]{min-width:185px}.max-w-6xl{max-width:72rem}.max-w-7xl{max-width:80rem}.max-w-full{max-width:100%}.max-w-lg{max-width:32rem}.max-w-md{max-width:28rem}.max-w-sm{max-width:24rem}.max-w-xl{max-width:36rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-\[92vw\]{max-width:92vw}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.-translate-x-1\/2{--tw-translate-x:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-105{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.cursor-pointer{cursor:pointer}.cursor-zoom-in{cursor:zoom-in}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-end{align-items:flex-end}.items-center{align-items:center}.items-stretch{align-items:stretch}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-4{gap:1rem}.gap-3{gap:0.75rem}.gap-x-2{column-gap:0.5rem}.gap-y-3\.5{row-gap:0.875rem}.gap-x-3{column-gap:0.75rem}.gap-y-5{row-gap:1.25rem}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.self-start{align-self:flex-start}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-0{border-width:0px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-amber-200\/70{border-color:rgb(253 230 138 / 0.7)}.border-amber-300{--tw-border-opacity:1;border-color:rgb(252 211 77 / var(--tw-border-opacity, 1))}.border-amber-300\/90{border-color:rgb(252 211 77 / 0.9)}.border-emerald-200{--tw-border-opacity:1;border-color:rgb(167 243 208 / var(--tw-border-opacity, 1))}.border-emerald-300{--tw-border-opacity:1;border-color:rgb(110 231 183 / var(--tw-border-opacity, 1))}.border-stone-100{--tw-border-opacity:1;border-color:rgb(245 245 244 / var(--tw-border-opacity, 1))}.border-stone-200{--tw-border-opacity:1;border-color:rgb(231 229 228 / var(--tw-border-opacity, 1))}.border-stone-200\/60{border-color:rgb(231 229 228 / 0.6)}.border-stone-200\/70{border-color:rgb(231 229 228 / 0.7)}.border-stone-200\/80{border-color:rgb(231 229 228 / 0.8)}.border-stone-200\/90{border-color:rgb(231 229 228 / 0.9)}.border-stone-300{--tw-border-opacity:1;border-color:rgb(214 211 209 / var(--tw-border-opacity, 1))}.border-stone-700{--tw-border-opacity:1;border-color:rgb(68 64 60 / var(--tw-border-opacity, 1))}.border-stone-800{--tw-border-opacity:1;border-color:rgb(41 37 36 / var(--tw-border-opacity, 1))}.border-black\/10{border-color:rgb(0 0 0 / 0.1)}.border-black\/15{border-color:rgb(0 0 0 / 0.15)}.border-stone-900{--tw-border-opacity:1;border-color:rgb(28 25 23 / var(--tw-border-opacity, 1))}.border-transparent{border-color:transparent}.border-red-200{--tw-border-opacity:1;border-color:rgb(254 202 202 / var(--tw-border-opacity, 1))}.border-amber-400{--tw-border-opacity:1;border-color:rgb(251 191 36 / var(--tw-border-opacity, 1))}.bg-\[\#06C755\]{--tw-bg-opacity:1;background-color:rgb(6 199 85 / var(--tw-bg-opacity, 1))}.bg-\[\#F7F4EF\]\/95{background-color:rgb(247 244 239 / 0.95)}.bg-\[\#FAF7F2\]{--tw-bg-opacity:1;background-color:rgb(250 247 242 / var(--tw-bg-opacity, 1))}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.bg-amber-400{--tw-bg-opacity:1;background-color:rgb(251 191 36 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-amber-50\/80{background-color:rgb(255 251 235 / 0.8)}.bg-amber-50\/90{background-color:rgb(255 251 235 / 0.9)}.bg-amber-700{--tw-bg-opacity:1;background-color:rgb(180 83 9 / var(--tw-bg-opacity, 1))}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/65{background-color:rgb(0 0 0 / 0.65)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-emerald-700{--tw-bg-opacity:1;background-color:rgb(4 120 87 / var(--tw-bg-opacity, 1))}.bg-red-500{--tw-bg-opacity:1;background-color:rgb(239 68 68 / var(--tw-bg-opacity, 1))}.bg-red-600\/80{background-color:rgb(220 38 38 / 0.8)}.bg-stone-100{--tw-bg-opacity:1;background-color:rgb(245 245 244 / var(--tw-bg-opacity, 1))}.bg-stone-200\/80{background-color:rgb(231 229 228 / 0.8)}.bg-stone-50{--tw-bg-opacity:1;background-color:rgb(250 250 249 / var(--tw-bg-opacity, 1))}.bg-stone-700{--tw-bg-opacity:1;background-color:rgb(68 64 60 / var(--tw-bg-opacity, 1))}.bg-stone-800{--tw-bg-opacity:1;background-color:rgb(41 37 36 / var(--tw-bg-opacity, 1))}.bg-stone-900{--tw-bg-opacity:1;background-color:rgb(28 25 23 / var(--tw-bg-opacity, 1))}.bg-stone-900\/60{background-color:rgb(28 25 23 / 0.6)}.bg-stone-900\/75{background-color:rgb(28 25 23 / 0.75)}.bg-stone-900\/95{background-color:rgb(28 25 23 / 0.95)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/70{background-color:rgb(255 255 255 / 0.7)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.bg-amber-800{--tw-bg-opacity:1;background-color:rgb(146 64 14 / var(--tw-bg-opacity, 1))}.bg-black\/85{background-color:rgb(0 0 0 / 0.85)}.bg-emerald-50\/90{background-color:rgb(236 253 245 / 0.9)}.bg-stone-200{--tw-bg-opacity:1;background-color:rgb(231 229 228 / var(--tw-bg-opacity, 1))}.bg-stone-900\/85{background-color:rgb(28 25 23 / 0.85)}.bg-white\/85{background-color:rgb(255 255 255 / 0.85)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-red-50{--tw-bg-opacity:1;background-color:rgb(254 242 242 / var(--tw-bg-opacity, 1))}.bg-amber-200{--tw-bg-opacity:1;background-color:rgb(253 230 138 / var(--tw-bg-opacity, 1))}.bg-red-400{--tw-bg-opacity:1;background-color:rgb(248 113 113 / var(--tw-bg-opacity, 1))}.bg-gradient-to-b{background-image:linear-gradient(to bottom, var(--tw-gradient-stops))}.from-\[\#FAF7F2\]{--tw-gradient-from:#FAF7F2 var(--tw-gradient-from-position);--tw-gradient-to:rgb(250 247 242 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-\[\#EFECE6\]{--tw-gradient-to:#EFECE6 var(--tw-gradient-to-position)}.object-contain{object-fit:contain}.object-cover{object-fit:cover}.p-1{padding:0.25rem}.p-2{padding:0.5rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-10{padding:2.5rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.py-8{padding-top:2rem;padding-bottom:2rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pb-1{padding-bottom:0.25rem}.pb-2{padding-bottom:0.5rem}.pb-3{padding-bottom:0.75rem}.pr-1{padding-right:0.25rem}.pt-1{padding-top:0.25rem}.pt-1\.5{padding-top:0.375rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.pt-4{padding-top:1rem}.pb-2\.5{padding-bottom:0.625rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-amber-300{--tw-text-opacity:1;color:rgb(252 211 77 / var(--tw-text-opacity, 1))}.text-amber-800{--tw-text-opacity:1;color:rgb(146 64 14 / var(--tw-text-opacity, 1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-amber-950{--tw-text-opacity:1;color:rgb(69 26 3 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.text-emerald-900{--tw-text-opacity:1;color:rgb(6 78 59 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-red-700{--tw-text-opacity:1;color:rgb(185 28 28 / var(--tw-text-opacity, 1))}.text-stone-400{--tw-text-opacity:1;color:rgb(168 162 158 / var(--tw-text-opacity, 1))}.text-stone-500{--tw-text-opacity:1;color:rgb(120 113 108 / var(--tw-text-opacity, 1))}.text-stone-600{--tw-text-opacity:1;color:rgb(87 83 78 / var(--tw-text-opacity, 1))}.text-stone-700{--tw-text-opacity:1;color:rgb(68 64 60 / var(--tw-text-opacity, 1))}.text-stone-800{--tw-text-opacity:1;color:rgb(41 37 36 / var(--tw-text-opacity, 1))}.text-stone-900{--tw-text-opacity:1;color:rgb(28 25 23 / var(--tw-text-opacity, 1))}.text-stone-950{--tw-text-opacity:1;color:rgb(12 10 9 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-emerald-950{--tw-text-opacity:1;color:rgb(2 44 34 / var(--tw-text-opacity, 1))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}.opacity-80{opacity:0.8}.opacity-70{opacity:0.7}.shadow{--tw-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-stone-800{--tw-ring-opacity:1;--tw-ring-color:rgb(41 37 36 / var(--tw-ring-opacity, 1))}.drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-150{transition-duration:150ms}.file\:mr-3::file-selector-button{margin-right:0.75rem}.file\:rounded-xl::file-selector-button{border-radius:0.75rem}.file\:border-0::file-selector-button{border-width:0px}.file\:bg-amber-100::file-selector-button{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.file\:px-3::file-selector-button{padding-left:0.75rem;padding-right:0.75rem}.file\:py-2::file-selector-button{padding-top:0.5rem;padding-bottom:0.5rem}.file\:text-xs::file-selector-button{font-size:0.75rem;line-height:1rem}.file\:font-bold::file-selector-button{font-weight:700}.file\:text-amber-950::file-selector-button{--tw-text-opacity:1;color:rgb(69 26 3 / var(--tw-text-opacity, 1))}.hover\:bg-\[\#05b34c\]:hover{--tw-bg-opacity:1;background-color:rgb(5 179 76 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-100:hover{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-200:hover{--tw-bg-opacity:1;background-color:rgb(253 230 138 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-600:hover{--tw-bg-opacity:1;background-color:rgb(217 119 6 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-100:hover{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-600:hover{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.hover\:bg-red-600:hover{--tw-bg-opacity:1;background-color:rgb(220 38 38 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-100:hover{--tw-bg-opacity:1;background-color:rgb(245 245 244 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-200:hover{--tw-bg-opacity:1;background-color:rgb(231 229 228 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-300:hover{--tw-bg-opacity:1;background-color:rgb(214 211 209 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-600:hover{--tw-bg-opacity:1;background-color:rgb(87 83 78 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-700:hover{--tw-bg-opacity:1;background-color:rgb(68 64 60 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-800:hover{--tw-bg-opacity:1;background-color:rgb(41 37 36 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-900:hover{--tw-bg-opacity:1;background-color:rgb(28 25 23 / var(--tw-bg-opacity, 1))}.hover\:bg-amber-700:hover{--tw-bg-opacity:1;background-color:rgb(180 83 9 / var(--tw-bg-opacity, 1))}.hover\:bg-stone-50:hover{--tw-bg-opacity:1;background-color:rgb(250 250 249 / var(--tw-bg-opacity, 1))}.hover\:bg-red-100:hover{--tw-bg-opacity:1;background-color:rgb(254 226 226 / var(--tw-bg-opacity, 1))}.hover\:text-stone-800:hover{--tw-text-opacity:1;color:rgb(41 37 36 / var(--tw-text-opacity, 1))}.hover\:opacity-100:hover{opacity:1}.hover\:file\:bg-amber-200::file-selector-button:hover{--tw-bg-opacity:1;background-color:rgb(253 230 138 / var(--tw-bg-opacity, 1))}.focus\:border-stone-500:focus{--tw-border-opacity:1;border-color:rgb(120 113 108 / var(--tw-border-opacity, 1))}.focus\:border-stone-800:focus{--tw-border-opacity:1;border-color:rgb(41 37 36 / var(--tw-border-opacity, 1))}.focus\:border-emerald-700:focus{--tw-border-opacity:1;border-color:rgb(4 120 87 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.group:hover .group-hover\:scale-110{--tw-scale-x:1.1;--tw-scale-y:1.1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:flex{display:flex}.sm\:hidden{display:none}.sm\:h-48{height:12rem}.sm\:h-12{height:3rem}.sm\:h-44{height:11rem}.sm\:h-40{height:10rem}.sm\:min-h-\[250px\]{min-height:250px}.sm\:w-auto{width:auto}.sm\:w-12{width:3rem}.sm\:w-44{width:11rem}.sm\:w-56{width:14rem}.sm\:w-48{width:12rem}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.sm\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.sm\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:items-center{align-items:center}.sm\:gap-2{gap:0.5rem}.sm\:p-4{padding:1rem}.sm\:p-5{padding:1.25rem}.sm\:p-6{padding:1.5rem}.sm\:px-3{padding-left:0.75rem;padding-right:0.75rem}.sm\:px-4{padding-left:1rem;padding-right:1rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:text-2xl{font-size:1.5rem;line-height:2rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-lg{font-size:1.125rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xs{font-size:0.75rem;line-height:1rem}}@media (min-width: 768px){.md\:inline-block{display:inline-block}}@media (min-width: 1024px){.lg\:col-span-5{grid-column:span 5 / span 5}.lg\:col-span-7{grid-column:span 7 / span 7}.lg\:h-screen{height:100vh}.lg\:h-full{height:100%}.lg\:w-auto{width:auto}.lg\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.lg\:flex-row{flex-direction:row}.lg\:items-center{align-items:center}.lg\:overflow-hidden{overflow:hidden}.lg\:overflow-y-auto{overflow-y:auto}}</style></head>
 <body class="min-h-screen w-full overflow-x-hidden overflow-y-auto flex flex-col select-none">
@@ -104,44 +82,118 @@
     </div>
   </header>
 
-// 1. 新增：控制 Step 1 商品橫列左右滑動
-function scrollProductList(direction) {
-  const prodListEl = document.getElementById('product-list');
-  if (!prodListEl) return;
-  prodListEl.scrollBy({ left: direction * 480, behavior: 'smooth' });
-}
-
-// 2. 替換 renderAll() 開頭產生 product-list 的部分：
-function renderAll() {
-  const prodListEl = document.getElementById('product-list');
-  if (prodListEl) {
-    prodListEl.innerHTML = products.map(p => {
-      const isSelected = p.id === currentProduct.id;
-      const badgeText = p.customizable ? `${(p.parts || []).length}部位選色` : '固定配色';
-      const badgeClass = p.customizable
-        ? (isSelected ? 'bg-amber-400 text-stone-950' : 'bg-amber-50 text-amber-900 border border-amber-200')
-        : (isSelected ? 'bg-red-400 text-stone-950' : 'bg-stone-200 text-stone-700');
-
-      return `
-        <button 
-          type="button" 
-          onclick="selectProduct(${p.id})" 
-          class="prod-card-item px-3.5 py-2 rounded-2xl text-left transition gap-3 ${isSelected ? 'bg-stone-800 text-white shadow-md' : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-300 shadow-sm'}"
-        >
-          <span class="text-2xl shrink-0">${p.icon}</span>
-          <div class="min-w-0 flex-1">
-            <div class="text-xs sm:text-sm font-bold truncate">${p.name}</div>
-            <div class="flex items-center gap-1.5 mt-1">
-              <span class="text-xs num-font font-extrabold ${isSelected ? 'text-amber-300' : 'text-stone-600'}">NT$${p.price}</span>
-              <span class="text-[11px] px-2 py-0.5 rounded-md font-bold shrink-0 ${badgeClass}">${badgeText}</span>
-            </div>
+  <!-- ========================================================= -->
+  <!-- STEP 1：橫向商品選擇列 (內建預先渲染商品，打開第一秒即顯示) -->
+  <!-- ========================================================= -->
+  <section class="shrink-0 bg-white/70 border-b border-stone-200/70 px-3 sm:px-6 py-2">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between mb-1.5">
+        <span class="text-[11px] font-bold uppercase tracking-wider text-stone-500">Step 1. 選擇編織款式（左右滑動挑選）</span>
+        <button type="button" onclick="window.toggleColorModal(true)" class="sm:hidden text-[11px] font-bold text-amber-800 underline">🎨 檢視完整色卡</button>
+      </div>
+      <div id="product-list" class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+      <button type="button" onclick="window.selectProduct(1)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">🌼</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">小雛菊花朵飲料收納袋</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$280</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">3部位選色</span>
           </div>
-        </button>
-      `;
-    }).join('');
-  }
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(2)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">🍙</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">大粽子編織造型御守(可放幸運物)</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$350</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">3部位選色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(3)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">💐</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">立體花束編織造型杯墊</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$450</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">3部位選色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(4)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">🧸</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">小熊造型編織杯墊</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$80</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">2部位選色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(5)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-stone-800 text-white shadow-md">
+        <span class="text-xl">👀</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">大眼怪獸造型置物墊</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-amber-300">NT$320</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-red-400 text-stone-950">固定配色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(7)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">🌻</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">花朵造型杯墊(可單/雙色)</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$120</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">3部位選色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(8)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">🐢</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">公雞編織造型耳機套</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$250</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">2部位選色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(9)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">👒</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">鏤空花紋編織綁帶帽</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$280</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">2部位選色</span>
+          </div>
+        </div>
+      </button>
+    
+      <button type="button" onclick="window.selectProduct(10)" class="shrink-0 px-3 py-2 rounded-xl text-left transition flex items-center gap-2.5 min-w-[185px] bg-white text-stone-700 hover:bg-stone-100 border border-stone-200">
+        <span class="text-xl">🧣</span>
+        <div class="min-w-0 flex-1">
+          <div class="text-xs font-bold truncate">雙色滾邊編織三角頭巾</div>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[11px] num-font font-bold text-stone-500">NT$280</span>
+            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold bg-amber-50 text-amber-900">2部位選色</span>
+          </div>
+        </div>
+      </button>
+    </div>
+    </div>
+  </section>
 
-  // ... (下方保留您原本 renderAll 裡面的 document.getElementById('current-prod-title') 等程式碼)
   <!-- ========================================================= -->
   <!-- 主工作區：一頁式自適應雙欄佈局 -->
   <!-- ========================================================= -->
@@ -211,6 +263,7 @@ function renderAll() {
         </div>
 
         
+
         <!-- 商品金額、數量與加入訂購車操作 -->
         <div class="space-y-2 pt-1 border-t border-stone-100">
           <div class="flex items-center justify-between">
@@ -751,8 +804,8 @@ function renderAll() {
           </div>
         </div>
 
-    </main>
-<!-- ========================================================= -->
+        </main>
+  <!-- ========================================================= -->
   <!-- 視窗最底部：訂製提醒與匯款排單備註區 -->
   <!-- ========================================================= -->
   <footer class="max-w-7xl w-full mx-auto px-3 sm:px-6 pb-8 pt-2">
@@ -807,7 +860,7 @@ function renderAll() {
               </button>
             </div>
 
-           <!-- 超商取貨：智慧門市搜尋清單（點擊即自動填入店名與地址）＋ Google 地圖 -->
+            <!-- 超商取貨：智慧門市搜尋清單（點擊即自動填入店名與地址）＋ Google 地圖 -->
             <div id="shipping-cvs-box" class="space-y-3 pt-1">
               <div class="flex flex-wrap items-center justify-between gap-2">
                 <span class="text-xs font-bold text-stone-700">📍 Step A. 搜尋並點選超商（點選後自動填入店名與地址）：</span>
@@ -844,6 +897,22 @@ function renderAll() {
                   <input id="cvs-store-name" type="text" placeholder="超商別與店名 * (例：7-ELEVEN 雅環門市)" class="w-full text-xs font-bold bg-white border-2 border-stone-300 rounded-xl px-3 py-2.5 focus:outline-none focus:border-stone-800">
                   <input id="cvs-store-address" type="text" placeholder="超商門市地址 * (點選上方搜尋結果將自動填入)" class="w-full text-xs bg-white border-2 border-stone-300 rounded-xl px-3 py-2.5 focus:outline-none focus:border-stone-800">
                 </div>
+              </div>
+            </div>
+
+              <div class="flex gap-1.5">
+                <input id="map-search-input" type="text" placeholder="輸入縣市路名查詢超商（例：台中市西屯區 7-11）" class="flex-1 text-xs bg-white border border-stone-300 rounded-xl px-3 py-1.5">
+                <button type="button" onclick="window.updateGoogleMap()" class="bg-stone-700 hover:bg-stone-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl shrink-0">查詢地圖</button>
+              </div>
+
+              <div class="w-full h-44 rounded-xl overflow-hidden border border-stone-300 bg-stone-100 relative">
+                <iframe id="google-map-iframe" class="w-full h-full border-0" loading="lazy" allowfullscreen="" src="https://maps.google.com/maps?q=台灣+7-ELEVEN+便利商店&amp;hl=zh-TW&amp;z=14&amp;output=embed"></iframe>
+              </div>
+              <p class="text-[10px] text-stone-500">💡 您可於上方地圖點擊超商查看店名與地址，並填寫於下方欄位：</p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input id="cvs-store-name" type="text" placeholder="超商別與店名 * (例：7-11 逢甲門市)" class="w-full text-xs bg-white border border-stone-300 rounded-xl px-3 py-2">
+                <input id="cvs-store-address" type="text" placeholder="超商門市地址 *" class="w-full text-xs bg-white border border-stone-300 rounded-xl px-3 py-2">
               </div>
             </div>
 
@@ -2044,7 +2113,8 @@ function compressImageFile(file, maxWidth = 800, quality = 0.78) {
 function findColorByCode(code) {
   return palette24.find(c => c.code === code) || palette20.find(c => c.code === code) || palette24[0];
 }
-// 控制商品列左右平滑捲動
+
+  // 控制商品列左右平滑捲動
 function scrollProductList(direction) {
   const listEl = byId('product-list');
   if (!listEl) return;
@@ -2052,7 +2122,6 @@ function scrollProductList(direction) {
   listEl.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
 }
 window.scrollProductList = scrollProductList;
-  
   
 function selectProduct(prodId) {
   if (!Array.isArray(products) || products.length === 0) {
@@ -2163,27 +2232,6 @@ function closeLightbox() {
 
 function renderAll() {
   setHtml('product-list', products.map(p => {
-    const isSelected = p.id === currentProduct.id;
-    const badgeText = p.customizable ? `${(p.parts || []).length}部位選色` : '固定配色';
-    const badgeClass = p.customizable
-      ? (isSelected ? 'bg-amber-400 text-stone-950' : 'bg-amber-50 text-amber-900')
-      : (isSelected ? 'bg-red-400 text-stone-950' : 'bg-stone-200 text-stone-700');
-
-    // 核心修正：加入 shrink-0 (不壓縮)、w-60 (固定寬度)、flex-none 確保永久橫排
-    return `
-      <button type="button" onclick="window.selectProduct(${p.id})" class="shrink-0 w-60 flex-none p-3 rounded-2xl text-left transition flex items-center gap-2.5 ${isSelected ? 'bg-stone-800 text-white shadow-md' : 'bg-white text-stone-700 hover:bg-stone-100 border border-stone-200'}">
-        <span class="text-xl shrink-0">${p.icon}</span>
-        <div class="min-w-0 flex-1">
-          <div class="text-xs font-bold truncate">${p.name}</div>
-          <div class="flex items-center gap-1.5 mt-0.5">
-            <span class="text-[11px] num-font font-bold ${isSelected ? 'text-amber-300' : 'text-stone-500'}">NT$${p.price}</span>
-            <span class="text-[10px] px-1.5 py-0.2 rounded font-bold shrink-0 ${badgeClass}">${badgeText}</span>
-          </div>
-        </div>
-      </button>
-    `;
-  }).join(''));
-  
     const isSelected = p.id === currentProduct.id;
     const badgeText = p.customizable ? `${(p.parts || []).length}部位選色` : '固定配色';
     const badgeClass = p.customizable
@@ -2429,154 +2477,9 @@ function setShippingMethod(method) {
 
   renderCart();
 }
+ 
 
-// 快速切換超商連鎖品牌搜尋
-function searchMapStore(brand) {
-  const input = byId('map-search-input');
-  const currentVal = input ? input.value.trim() : '';
-  // 保留使用者已輸入的地區關鍵字，僅替換超商品牌名稱
-  const cleanedRegion = currentVal.replace(/7-ELEVEN|7-11|統一超商|全家便利商店|全家|FamilyMart|門市|便利商店|台灣/gi, '').trim();
-  if (input) {
-    input.value = cleanedRegion ? `${cleanedRegion} ${brand}` : `台中市 ${brand}`;
-  }
-  updateGoogleMap();
-}
-
-// 搜尋超商門市清單 ＆ 同步更新 Google 地圖
-async function updateGoogleMap() {
-  const input = byId('map-search-input');
-  const q = (input && input.value.trim()) || '台中市 7-ELEVEN';
-  const iframe = byId('google-map-iframe');
-  if (iframe) {
-    iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(q)}&hl=zh-TW&z=15&output=embed`;
-  }
-
-  const resultsBox = byId('cvs-store-results');
-  if (!resultsBox) return;
-  resultsBox.classList.remove('modal-hidden');
-  resultsBox.innerHTML = `<div class="text-center py-3 text-stone-500 font-bold">⏳ 正在為您搜尋「${q}」附近的超商門市清單...</div>`;
-
-  try {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=10&countrycodes=tw&accept-language=zh-TW&q=${encodeURIComponent(q)}`;
-    const res = await fetch(url);
-    const list = await res.json();
-    renderCvsStoreList(list, q);
-  } catch (err) {
-    resultsBox.innerHTML = `<div class="text-xs text-stone-500 p-2">💡 請直接於下方地圖點擊查看門市，或輸入更明確的「區域名稱＋7-11/全家」再試一次。</div>`;
-  }
-}
-
-// 使用手機/電腦 GPS 定位搜尋附近超商
-function locateNearbyCvs() {
-  const resultsBox = byId('cvs-store-results');
-  if (!navigator.geolocation) {
-    showToast('⚠️ 您的瀏覽器不支援定位，請直接輸入路名或區域名稱搜尋');
-    return;
-  }
-  if (resultsBox) {
-    resultsBox.classList.remove('modal-hidden');
-    resultsBox.innerHTML = `<div class="text-center py-3 text-stone-600 font-bold">📍 正在取得您的位置並搜尋附近超商...</div>`;
-  }
-
-  navigator.geolocation.getCurrentPosition(async (pos) => {
-    const lat = pos.coords.latitude;
-    const lon = pos.coords.longitude;
-    const iframe = byId('google-map-iframe');
-    if (iframe) {
-      iframe.src = `https://maps.google.com/maps?q=便利商店&ll=${lat},${lon}&hl=zh-TW&z=16&output=embed`;
-    }
-    try {
-      // 查詢方圓 1.5 公里內的 7-ELEVEN 與全家便利商店
-      const overpassQuery = `[out:json][timeout:10];(node["shop"="convenience"](around:1500,${lat},${lon});way["shop"="convenience"](around:1500,${lat},${lon}););out body center 15;`;
-      const res = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(overpassQuery)}`);
-      const data = await res.json();
-      const elements = (data && data.elements) || [];
-
-      if (elements.length === 0) {
-        updateGoogleMap();
-        return;
-      }
-
-      const stores = elements.map(el => {
-        const tags = el.tags || {};
-        const brand = tags.brand || tags.name || '便利商店';
-        const branch = tags.branch ? ` ${tags.branch}` : (tags['name:zh'] || '');
-        const storeName = (brand + branch).trim();
-        const addr = [tags['addr:city'] || '', tags['addr:district'] || '', tags['addr:street'] || '', tags['addr:housenumber'] || ''].join('') || tags['addr:full'] || `座標 (${(el.lat || lat).toFixed(4)}, ${(el.lon || lon).toFixed(4)}) 附近門市`;
-        return { storeName, addr };
-      });
-
-      renderParsedStoreCards(stores);
-    } catch (e) {
-      updateGoogleMap();
-    }
-  }, () => {
-    showToast('⚠️ 無法取得定位權限，請在搜尋框輸入「地區＋7-11或全家」查詢');
-  });
-}
-
-// 整理並顯示可點擊的超商門市卡片
-function renderCvsStoreList(rawList, queryStr) {
-  const resultsBox = byId('cvs-store-results');
-  if (!resultsBox) return;
-
-  if (!Array.isArray(rawList) || rawList.length === 0) {
-    resultsBox.innerHTML = `<div class="text-xs text-stone-600 p-2">找不到完全符合「${queryStr}」的門市列表，您可以嘗試輸入<strong>「縣市區＋路名＋7-11」</strong>（例如：<code>台中大雅 7-11</code>），或直接從下方地圖查看。</div>`;
-    return;
-  }
-
-  const stores = rawList.map(item => {
-    const a = item.address || {};
-    const parts = (item.display_name || '').split(',').map(s => s.trim());
-    const rawTitle = item.name || parts[0] || '超商門市';
-    const city = a.city || a.county || a.town || '';
-    const district = a.suburb || a.city_district || a.village || '';
-    const road = a.road || a.pedestrian || '';
-    const houseNo = a.house_number ? `${a.house_number}號` : '';
-    let fullAddr = `${city}${district}${road}${houseNo}`;
-    if (!fullAddr || fullAddr.length < 5) {
-      fullAddr = parts.slice(1, -2).reverse().join('');
-    }
-    const storeName = rawTitle.includes('7-') || rawTitle.includes('全家') || rawTitle.includes('萊爾富') || rawTitle.includes('OK')
-      ? rawTitle
-      : `${queryStr.includes('全家') ? '全家' : '7-ELEVEN'} ${rawTitle}`;
-    return { storeName, addr: fullAddr || item.display_name };
-  });
-
-  renderParsedStoreCards(stores);
-}
-
-function renderParsedStoreCards(stores) {
-  const resultsBox = byId('cvs-store-results');
-  if (!resultsBox) return;
-
-  resultsBox.innerHTML = `
-    <div class="text-xs font-bold text-amber-900 px-1 pb-1 border-b border-amber-200 flex justify-between items-center">
-      <span>👇 請直接點選下方門市，系統將自動帶入店名與地址：</span>
-      <button type="button" onclick="document.getElementById('cvs-store-results').classList.add('modal-hidden')" class="text-stone-400 hover:text-stone-700">收合 ✕</button>
-    </div>
-  ` + stores.map((s, idx) => {
-    const safeName = s.storeName.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    const safeAddr = s.addr.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    return `
-      <button 
-        type="button" 
-        onclick="window.selectCvsStoreItem('${safeName}', '${safeAddr}')" 
-        class="w-full text-left p-2.5 rounded-xl bg-[#FAF7F2] hover:bg-amber-100/90 border border-stone-200 hover:border-amber-400 transition flex items-center justify-between gap-2 group"
-      >
-        <div class="min-w-0 flex-1">
-          <div class="font-bold text-stone-900 group-hover:text-amber-950 truncate">🏪 ${s.storeName}</div>
-          <div class="text-xs text-stone-600 truncate mt-0.5">📍 ${s.addr}</div>
-        </div>
-        <span class="shrink-0 bg-stone-800 group-hover:bg-amber-700 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
-          點此帶入
-        </span>
-      </button>
-    `;
-  }).join('');
-}
-
-// 當買家點選清單中的任一超商時，自動同步填入「超商店名」與「門市地址」並定位地圖
+/ 當買家點選清單中的任一超商時，自動同步填入「超商店名」與「門市地址」並定位地圖
 function selectCvsStoreItem(storeName, storeAddr) {
   const nameEl = byId('cvs-store-name');
   const addrEl = byId('cvs-store-address');
@@ -3271,70 +3174,34 @@ function renderAdminProducts() {
   const container = byId('admin-products-list-container');
   if (!container) return;
 
-  container.innerHTML = products.map((p, idx) => `
-    <div class="bg-white p-4 rounded-2xl border-2 border-stone-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 shadow-sm">
-      <div class="space-y-2 flex-1 min-w-0 w-full">
+  container.innerHTML = products.map((p) => `
+    <div class="bg-white p-4 rounded-2xl border border-stone-200 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+      <div class="space-y-1.5 flex-1 min-w-0 w-full">
         <div class="flex flex-wrap items-center gap-2">
-          <!-- 商品目前排序編號 -->
-          <span class="bg-stone-800 text-amber-300 text-xs font-extrabold px-2.5 py-1 rounded-lg num-font">
-            排序 #${idx + 1}
-          </span>
-          <span class="text-2xl">${p.icon}</span>
-          <input id="admin-name-${p.id}" type="text" value="${p.name}" class="text-sm font-bold text-stone-800 bg-stone-50 border-2 border-stone-300 rounded-xl px-3 py-1.5 w-48 sm:w-60">
-          <span class="text-sm font-bold text-stone-600">NT$</span>
-          <input id="admin-price-${p.id}" type="number" min="0" value="${p.price}" class="w-24 text-sm font-bold num-font bg-stone-50 border-2 border-stone-300 rounded-xl px-3 py-1.5">
-          <button type="button" onclick="window.updateProductInfo(${p.id})" class="bg-stone-800 hover:bg-stone-700 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition">
+          <span class="text-xl">${p.icon}</span>
+          <input id="admin-name-${p.id}" type="text" value="${p.name}" class="text-xs sm:text-sm font-bold text-stone-800 bg-stone-50 border border-stone-300 rounded-lg px-2.5 py-1 w-48 sm:w-56">
+          <span class="text-xs text-stone-500">NT$</span>
+          <input id="admin-price-${p.id}" type="number" min="0" value="${p.price}" class="w-20 text-xs font-bold num-font bg-stone-50 border border-stone-300 rounded-lg px-2 py-1">
+          <button type="button" onclick="window.updateProductInfo(${p.id})" class="bg-stone-800 hover:bg-stone-700 text-white text-xs font-bold px-3 py-1 rounded-lg transition">
             💾 儲存名稱與價格
           </button>
         </div>
         <div class="text-xs text-stone-500">
-          選色部位：${(p.parts || []).join('、')} ｜ 目前樣式圖示數量：<strong>${(p.images || []).length} 張</strong>
+          選色部位：${p.parts.join('、')} ｜ 目前樣式圖示數量：<strong>${(p.images || []).length} 張</strong>
         </div>
       </div>
 
-      <!-- 右側：排序按鈕群 ＋ 選色切換 ＋ 圖示新增 ＋ 刪除 -->
-      <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto shrink-0 border-t lg:border-t-0 pt-3 lg:pt-0 border-stone-100">
-        <!-- 調整順序按鈕群 -->
-        <div class="flex items-center gap-1 bg-stone-100 p-1 rounded-xl border border-stone-200">
-          <button 
-            type="button" 
-            onclick="window.moveProductToTop(${idx})" 
-            ${idx === 0 ? 'disabled' : ''} 
-            class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${idx === 0 ? 'text-stone-300 cursor-not-allowed' : 'bg-white hover:bg-amber-100 text-stone-800 shadow-sm'}"
-            title="移至第一順位"
-          >
-            ⏫ 置頂
-          </button>
-          <button 
-            type="button" 
-            onclick="window.moveProductOrder(${idx}, -1)" 
-            ${idx === 0 ? 'disabled' : ''} 
-            class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${idx === 0 ? 'text-stone-300 cursor-not-allowed' : 'bg-white hover:bg-stone-200 text-stone-800 shadow-sm'}"
-            title="往前移一格"
-          >
-            ⬆ 上移
-          </button>
-          <button 
-            type="button" 
-            onclick="window.moveProductOrder(${idx}, 1)" 
-            ${idx === products.length - 1 ? 'disabled' : ''} 
-            class="px-2.5 py-1.5 rounded-lg text-xs font-bold transition ${idx === products.length - 1 ? 'text-stone-300 cursor-not-allowed' : 'bg-white hover:bg-stone-200 text-stone-800 shadow-sm'}"
-            title="往後移一格"
-          >
-            ⬇ 下移
-          </button>
-        </div>
-
-        <button type="button" onclick="window.toggleProductCustomizable(${p.id})" class="px-3 py-2 rounded-xl text-xs font-bold transition ${p.customizable ? 'bg-emerald-600 text-white' : 'bg-stone-200 text-stone-700'}">
+      <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto shrink-0">
+        <button type="button" onclick="window.toggleProductCustomizable(${p.id})" class="px-3 py-1.5 rounded-xl text-xs font-bold transition ${p.customizable ? 'bg-emerald-600 text-white' : 'bg-stone-200 text-stone-700'}">
           ${p.customizable ? '🎨 開放選色' : '🔒 固定配色'}
         </button>
 
-        <label class="cursor-pointer bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold px-3 py-2 rounded-xl transition">
-          ＋ 新增圖示
+        <label class="cursor-pointer bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold px-3 py-1.5 rounded-xl transition">
+          ＋ 新增樣式圖示
           <input type="file" accept="image/*" multiple onchange="window.handleAddStyleImages(event, ${p.id})" class="hidden">
         </label>
 
-        <button type="button" onclick="window.deleteProduct(${p.id})" class="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-bold px-3 py-2 rounded-xl transition">
+        <button type="button" onclick="window.deleteProduct(${p.id})" class="bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-bold px-2.5 py-1.5 rounded-xl transition">
           刪除
         </button>
       </div>
@@ -3342,38 +3209,6 @@ function renderAdminProducts() {
   `).join('');
 }
 
-// 上移或下移商品順序 (-1 為往前移，+1 為往後移)
-function moveProductOrder(index, direction) {
-  const targetIndex = index + direction;
-  if (targetIndex < 0 || targetIndex >= products.length) return;
-
-  // 交換陣列中的兩個商品位置
-  const temp = products[index];
-  products[index] = products[targetIndex];
-  products[targetIndex] = temp;
-
-  saveAllToStorage(true);
-  renderAdminProducts();
-  renderAll();
-  showToast(`✅ 已將「${temp.name}」調整至第 ${targetIndex + 1} 順位！`);
-}
-
-// 一鍵將商品移至第一順位（置頂）
-function moveProductToTop(index) {
-  if (index <= 0 || index >= products.length) return;
-  const [targetProd] = products.splice(index, 1);
-  products.unshift(targetProd);
-
-  saveAllToStorage(true);
-  renderAdminProducts();
-  renderAll();
-  showToast(`⏫ 已將「${targetProd.name}」置頂為第 1 順位！`);
-}
-
-// 掛載至全域 window 確保按鈕點擊有效
-window.moveProductOrder = moveProductOrder;
-window.moveProductToTop = moveProductToTop;
-  
 function updateProductInfo(prodId) {
   const prod = products.find(p => p.id === prodId);
   const nameEl = byId(`admin-name-${prodId}`);
