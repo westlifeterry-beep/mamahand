@@ -9,6 +9,7 @@ var SHEET_PRODUCTS = "商品清單";
 var SHEET_ORDERS = "訂單紀錄";
 var SHEET_MESSAGES = "留言問答紀錄";
 var CHUNK = 45000;
+var CHUNK_PREFIX = "__CHUNK__:";
 
 function doGet(e) {
   var action = e && e.parameter && e.parameter.action ? String(e.parameter.action) : "getData";
@@ -28,7 +29,7 @@ function doPost(e) {
   if (action === "newOrder") return json(addOrder(body));
   if (action === "newMessage") return json(addMessage(body));
   if (!isPasswordConfigured()) {
-    return json(handleAdmin(body));
+    return json({ status: "unconfigured", authVersion: 2, passwordConfigured: false, message: "請先在 Apps Script 執行「設定賣家密碼」" });
   }
   if (!tokenValid(body.token)) return json({ status: "unauthorized", authVersion: 2, passwordConfigured: true });
   return json(handleAdmin(body));
@@ -60,13 +61,13 @@ function publicPayload() {
     products: state.products,
     storeSettings: cleanSettings(state.settings),
     buyerMessages: state.messages.map(publicMessage),
-    orders: configured ? [] : state.orders
+    orders: []
   };
 }
 
 function adminPayload(token) {
-  if (isPasswordConfigured() && !tokenValid(token)) {
-    return { status: "unauthorized", authVersion: 2, passwordConfigured: true };
+  if (!isPasswordConfigured() || !tokenValid(token)) {
+    return { status: "unauthorized", authVersion: 2, passwordConfigured: isPasswordConfigured() };
   }
   var state = loadState();
   return {
@@ -368,7 +369,11 @@ function readKeyedJson(sheet, key) {
     if (String(values[r][0]) !== key) continue;
     var joined = "";
     for (var c = 1; c < values[r].length; c++) {
-      if (values[r][c] !== "" && values[r][c] != null) joined += String(values[r][c]);
+      var cell = values[r][c];
+      if (cell === "" || cell == null) continue;
+      cell = String(cell);
+      if (cell.indexOf(CHUNK_PREFIX) === 0) cell = cell.substring(CHUNK_PREFIX.length);
+      joined += cell;
     }
     if (!joined) return null;
     return JSON.parse(joined);
@@ -379,7 +384,7 @@ function readKeyedJson(sheet, key) {
 function writeKeyedJson(sheet, key, obj) {
   var textValue = JSON.stringify(obj);
   var parts = [];
-  for (var i = 0; i < textValue.length; i += CHUNK) parts.push(textValue.substring(i, i + CHUNK));
+  for (var i = 0; i < textValue.length; i += CHUNK) parts.push(CHUNK_PREFIX + textValue.substring(i, i + CHUNK));
   var values = sheet.getDataRange().getValues();
   var row = 0;
   for (var r = 1; r < values.length; r++) {
